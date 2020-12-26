@@ -1,3 +1,92 @@
-<p>
-  morador works!
-</p>
+<section class="content-header">
+</section>
+
+<section class="content">
+  <section class="invoice">
+
+        <form #form="ngForm" novalidate>
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i></i> Cadastrar Morador
+              </h2>
+            </div>
+          </div>
+
+          <div class="row invoice-info">
+            <div class="col-xs-12">
+              <p class="lead">Dados pessoais:</p>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="form-group" [class.has-success]="iptNome.valid && (iptNome.dirty || iptNome.touched)"
+                                      [class.has-error]="!iptNome.valid && (iptNome.dirty || iptNome.touched)" >
+                <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Nome Completo</label>
+                <input type="text" class="form-control" required minlength="10" #iptNome="ngModel" name="nome" ngModel id="inputSuccess" placeholder="Nome Completo" autocomplete="off">
+                <span class="help-block" *ngIf="iptNome.valid && (iptNome.dirty || iptNome.touched)"><i class="fa fa-check"></i> Ok</span>
+                <span class="help-block" *ngIf="!iptNome.valid && (iptNome.dirty || iptNome.touched)"><i class="fa fa-check"></i> Campo obrigatório</span>
+              </div>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+              <div class="form-group" [class.has-success]="iptCPF.valid && (iptCPF.dirty || iptCPF.touched)"
+                                      [class.has-error]="!iptCPF.valid && (iptCPF.dirty || iptCPF.touched)">
+                <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> CPF</label>
+                <input type="text" class="form-control" required minlength="11" name="cpf" #iptCPF="ngModel" required ngModel id="inputSuccess" placeholder="CPF" autocomplete="off">
+                <span class="help-block" *ngIf="iptCPF.valid && (iptCPF.dirty || iptCPF.touched)"><i class="fa fa-check"></i> Ok</span>
+                <span class="help-block" *ngIf="!iptCPF.valid && (iptCPF.dirty || iptCPF.touched)"><i class="fa fa-check"></i> Campo obrigatório</span>
+              </div>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+              <div class="form-group">
+                <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> RG</label>
+                <input type="text" class="form-control" name="optional" ngModel id="inputRG" placeholder="RG">
+              </div>
+            <!-- /.col -->
+          </div>
+
+          <div class="col-xs-12">
+            <p class="lead">e-mail:</p>
+          </div>
+          <div class="col-sm-4 col-xs-6">
+            <div class="form-group">
+              <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> e-mail</label>
+              <input type="text" class="form-control" name="optional" ngModel id="inputEmail" placeholder="e-mail">
+            </div>
+          <!-- /.col -->
+          </div>
+
+          <div class="col-xs-12">
+            <p class="lead">Telefone:</p>
+          </div>
+          <div class="col-sm-2 col-xs-6">
+            <div class="form-group">
+              <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Telefone</label>
+              <input type="text" class="form-control" name="optional" ngModel id="inputTelefone" placeholder="Telefone">
+            </div>
+          <!-- /.col -->
+          </div>
+
+          <div class="col-sm-2 col-xs-6">
+            <div class="form-group">
+              <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Celular</label>
+              <input type="text" class="form-control" name="optional" ngModel id="inputCelular" placeholder="Celular">
+            </div>
+          <!-- /.col -->
+          </div>
+
+
+        <!-- /.row -->
+        </div>
+
+        </form>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button class="btn btn-success pull-right" [disabled]="!form.valid"><i></i> Concluir Cadastro
+            </button>
+          </div>
+        </div>
+
+    </section>
+</section>
