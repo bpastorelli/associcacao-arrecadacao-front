@@ -26,6 +26,7 @@ import { ResidenciasService } from './residencias/residencias.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ResidenciasComponent } from './residencias/residencias.component';
 import { MoradorComponent } from './moradores/morador/morador.component';
+import { InputComponent } from './shared/input.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MoradorComponent } from './moradores/morador/morador.component';
     OrderComponent,
     MoradoresComponent,
     ResidenciasComponent,
-    MoradorComponent
+    MoradorComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
