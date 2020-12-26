@@ -8,13 +8,20 @@ import { MoradoresService } from './moradores.service';
 })
 export class MoradoresComponent implements OnInit {
 
-  pag : Number = 1 ;
+  pag : Number = 1;
   contador : Number = 10;
   public moradores: Morador[]
 
   constructor(private moradoresService: MoradoresService)  { }
 
   ngOnInit() {
+
+      this.getMoradores();
+
+  }
+
+  getMoradores(){
+
     this.moradoresService.moradores()
     .subscribe(
       data=>{
