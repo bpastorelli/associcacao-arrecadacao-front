@@ -1,0 +1,41 @@
+<section class="content-header">
+  <h1>
+    Lista de Moradores
+  </h1>
+</section>
+
+
+<section class="content">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+            <th><span>ID</span></th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Telefone</th>
+            <th>Celular</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let morador of moradores | paginate: { itemsPerPage: contador, currentPage: pag }">
+          <td>{{ morador.id}}</td>
+          <td>{{ morador.nome }}</td>
+          <td>{{ morador.email }}</td>
+          <td>{{ morador.cpf }}</td>
+          <td>{{ morador.rg }}</td>
+          <td>{{ morador.telefone }}</td>
+          <td>{{ morador.celular }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--inclindo o controle de paginação.-->
+    <div class="text-right">
+      <pagination-controls (pageChange)="pageChanged($event)"
+          previousLabel="Anterior"
+          nextLabel="Próximo"
+      ></pagination-controls>
+    </div>
+</section>
+
