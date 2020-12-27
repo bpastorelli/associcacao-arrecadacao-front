@@ -1,8 +1,8 @@
 import { ErrorHandler } from './../app.error-handler';
 import { MEAT_API } from './../app.api';
-import { Morador } from "./morador.model";
+import { Moradores } from "./moradores.model";
 import { Http } from '@angular/http'
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -14,7 +14,7 @@ export class MoradoresService {
 
   constructor(private http: Http){}
 
-  moradores(): Observable<Morador[]> {
+  moradores(): Observable<Moradores[]> {
 
     return this.http.get(`${MEAT_API}/associados/morador?id=&cpf=&rg=&email=&nome=&pag=0&ord=nome&dir=ASC&size=1000000`)
         .map(response => response.json())
@@ -22,7 +22,7 @@ export class MoradoresService {
 
   }
 
-  moradoresById(id: string): Observable<Morador>{
+  moradoresById(id: string): Observable<Moradores[]>{
 
     return this.http.get(`${MEAT_API}/associados/morador?id=${id}&cpf=&rg=&email=&nome=&pag=0&ord=nome&dir=ASC&size=1000000`)
         .map(response => response.json())

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Morador } from './morador.model';
+import { Moradores } from './../moradores/moradores.model';
 import { MoradoresService } from './moradores.service';
 
 @Component({
@@ -10,7 +10,7 @@ export class MoradoresComponent implements OnInit {
 
   pag : Number = 1;
   contador : Number = 10;
-  public moradores: Morador[]
+  public moradores: Moradores[]
 
   constructor(private moradoresService: MoradoresService)  { }
 

@@ -49,7 +49,7 @@
           <div class="col-sm-2 col-xs-6">
             <div class="form-group">
               <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Telefone</label>
-              <input type="text" class="form-control" name="optional" ngModel id="inputTelefone" placeholder="Telefone">
+              <input type="text" class="form-control" name="telefone" ngModel id="inputTelefone" placeholder="Telefone">
             </div>
           </div>
 
@@ -59,16 +59,33 @@
             </mt-input-container>
           </div>
 
+          <div class="col-xs-12">
+            <p class="lead">Código da Residência:</p>
+          </div>
+          <div class="col-sm-2 col-xs-6">
+            <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código Residência">
+              <input class="form-control" name="residenciaId" ngModel required minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
+            </mt-input-container>
+          </div>
+
         <!-- /.row -->
         </div>
 
         </form>
 
+
         <div class="row">
           <div class="col-xs-12">
-            <button class="btn btn-success pull-right" [disabled]="!form.valid"><i></i> Concluir Cadastro
+            <button (click)="postMoradores(form.value)" class="btn btn-success pull-right"
+            [disabled]="!form.valid"><i></i> Concluir Cadastro
             </button>
           </div>
+        </div>
+
+        <div>
+
+          {{moradorResponse}}
+
         </div>
 
     </section>
