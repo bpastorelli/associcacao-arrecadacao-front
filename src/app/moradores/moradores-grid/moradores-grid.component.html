@@ -1,0 +1,22 @@
+<table class="progressive-table">
+  <thead>
+      <tr>
+          <th>KEY</th>
+          <th>VALUE</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let pair of pairs; let idx = index">
+      <td>
+          <input type="text" [(ngModel)]="pair.Key" (ngModelChange)="pairValueChanged(idx)">
+      </td>
+      <td>
+          <input type="text" [(ngModel)]="pair.Value" (ngModelChange)="pairValueChanged(idx)">
+      </td>
+      <td>
+          <i class="fa fa-times" aria-hidden="true" (click)="deletePair(idx)"></i>
+      </td>
+  </tr>
+  </tbody>
+</table>

@@ -22,10 +22,15 @@ import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-
 import { OrderComponent } from './order/order.component';
 import { MoradoresComponent } from './moradores/moradores.component';
 import { MoradoresService } from './moradores/moradores.service';
+import { MoradorService } from './moradores/morador/morador.service';
 import { ResidenciasService } from './residencias/residencias.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ResidenciasComponent } from './residencias/residencias.component';
 import { MoradorComponent } from './moradores/morador/morador.component';
+import { InputComponent } from './shared/input/input.component';
+import { RadioComponent } from './shared/radio/radio.component';
+import { MoradorSummaryComponent } from './morador-summary/morador-summary.component';
+import { MoradoresGridComponent } from './moradores/moradores-grid/moradores-grid.component';
 
 
 @NgModule({
@@ -44,7 +49,11 @@ import { MoradorComponent } from './moradores/morador/morador.component';
     OrderComponent,
     MoradoresComponent,
     ResidenciasComponent,
-    MoradorComponent
+    MoradorComponent,
+    InputComponent,
+    RadioComponent,
+    MoradorSummaryComponent,
+    MoradoresGridComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +62,7 @@ import { MoradorComponent } from './moradores/morador/morador.component';
     NgxPaginationModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [MoradoresService, ResidenciasService, RestaurantsService, ShoppingCartService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [MoradorService, MoradoresService, ResidenciasService, RestaurantsService, ShoppingCartService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
