@@ -14,17 +14,9 @@ export class MoradoresService {
 
   constructor(private http: Http){}
 
-  moradores(): Observable<Moradores[]> {
+  moradores(nome: string, cpf: string, rg: string, email: string): Observable<Moradores[]> {
 
-    return this.http.get(`${MEAT_API}/associados/morador?id=&cpf=&rg=&email=&nome=&pag=0&ord=nome&dir=ASC&size=1000000`)
-        .map(response => response.json())
-        .catch(ErrorHandler.handleError)
-
-  }
-
-  moradoresById(id: string): Observable<Moradores[]>{
-
-    return this.http.get(`${MEAT_API}/associados/morador?id=${id}&cpf=&rg=&email=&nome=&pag=0&ord=nome&dir=ASC&size=1000000`)
+    return this.http.get(`${MEAT_API}/associados/morador/filtro?id=0&cpf=${cpf}&rg=${rg}&email=${email}&nome=${nome}&pag=0&ord=nome&dir=ASC&size=1000000`)
         .map(response => response.json())
         .catch(ErrorHandler.handleError)
 

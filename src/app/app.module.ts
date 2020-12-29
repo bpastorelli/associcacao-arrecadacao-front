@@ -30,6 +30,7 @@ import { MoradorComponent } from './moradores/morador/morador.component';
 import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
 import { MoradorSummaryComponent } from './morador-summary/morador-summary.component';
+import { MoradoresGridComponent } from './moradores/moradores-grid/moradores-grid.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { MoradorSummaryComponent } from './morador-summary/morador-summary.compo
     MoradorComponent,
     InputComponent,
     RadioComponent,
-    MoradorSummaryComponent
+    MoradorSummaryComponent,
+    MoradoresGridComponent
   ],
   imports: [
     BrowserModule,
