@@ -9,5 +9,6 @@ export interface Moradores {
   perfil: string
   telefone: string
   celular: string
+  residenciaId: string
 
 }

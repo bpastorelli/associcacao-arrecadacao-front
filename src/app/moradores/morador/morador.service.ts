@@ -1,4 +1,3 @@
-import { Moradores } from './../moradores.model';
 import { ErrorHandler } from './../../app.error-handler';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { MEAT_API } from './../../app.api';
@@ -15,17 +14,18 @@ export class MoradorService {
 
   constructor(private http: Http) { }
 
-  postMoradores(moradores: Morador, residenciaId: string): Observable<string> {
+  postMoradores(morador: Morador): Observable<string> {
 
     const headers = new Headers()
     headers.append('Content-Type','application/json')
 
-    console.log(moradores)
+    console.log("Dados:" + JSON.stringify(morador))
 
-    return this.http.post(`${MEAT_API}/associados/morador/incluir/residencia/${residenciaId}`
-        , JSON.stringify(moradores)
+    return this.http.post(`${MEAT_API}/associados/morador/incluir`
+        , JSON.stringify(morador)
         , new RequestOptions({headers: headers}))
         .map(response => response.json())
+        .map(morador => morador.id)
         .catch(ErrorHandler.handleError)
 
   }

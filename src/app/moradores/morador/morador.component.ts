@@ -1,8 +1,8 @@
 import { Moradores } from './../moradores.model';
 import { MoradorService } from './morador.service';
-import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { Morador, MoradoresRequest } from './../morador/morador.model';
+import { Morador } from './../morador/morador.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mt-morador',
@@ -11,10 +11,11 @@ import { Morador, MoradoresRequest } from './../morador/morador.model';
 export class MoradorComponent implements OnInit {
 
   public moradorResponse: string
-  public morador: Morador[] = []
-  public moradoresRequest: MoradoresRequest
+  public morador: Morador
+  public moradores: Moradores
 
-  constructor(private moradorService: MoradorService) { }
+  constructor(private moradorService: MoradorService,
+      private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,18 +28,12 @@ export class MoradorComponent implements OnInit {
 
   postMoradores(morador: Morador) {
 
-    this.moradorService.postMoradores(morador, morador.residenciaId)
-    .subscribe(
-      data=>{
-        console.log(data);
-        this.moradorResponse = data;
-
-      }, err=>{
-        console.log(err);
-      }
-    );
-    return this.moradorResponse;
-
+    this.moradorService.postMoradores(morador)
+    .subscribe((id: string) => {
+      this.router.navigate(['/morador-summary']);
+      console.log(`Morador cadastrado: ${id}`);
+    });
+    console.log(morador);
   }
 
 }

@@ -27,7 +27,6 @@ export class MoradoresComponent implements OnInit {
       data=>{
         console.log(data);
         this.moradores = data;
-
       }, err=>{
         console.log(err);
       }

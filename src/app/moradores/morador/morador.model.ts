@@ -12,13 +12,4 @@ class Morador{
 
 }
 
-class MoradoresRequest{
-
-    constructor(
-
-      public moradores: Morador[]
-
-    ){}
-}
-
-export {Morador, MoradoresRequest}
+export {Morador}

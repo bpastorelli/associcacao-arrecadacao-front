@@ -29,6 +29,7 @@ import { ResidenciasComponent } from './residencias/residencias.component';
 import { MoradorComponent } from './moradores/morador/morador.component';
 import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
+import { MoradorSummaryComponent } from './morador-summary/morador-summary.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { RadioComponent } from './shared/radio/radio.component';
     ResidenciasComponent,
     MoradorComponent,
     InputComponent,
-    RadioComponent
+    RadioComponent,
+    MoradorSummaryComponent
   ],
   imports: [
     BrowserModule,
