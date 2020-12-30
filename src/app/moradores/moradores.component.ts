@@ -10,7 +10,7 @@ export class MoradoresComponent implements OnInit {
 
   public moradores: Moradores[]
   pag : Number = 1;
-  contador : Number = 10;
+  contador : Number = 15;
 
   constructor(private moradoresService: MoradoresService)  { }
 
