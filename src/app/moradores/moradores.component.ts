@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { MoradorUpdateComponent } from './morador-update/morador-update.component';
+import { Router } from '@angular/router';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { Moradores } from './../moradores/moradores.model';
 import { MoradoresService } from './moradores.service';
+import { EmitterService } from './../emitter.service';
 
 @Component({
   selector: 'mt-moradores',
@@ -8,11 +11,17 @@ import { MoradoresService } from './moradores.service';
 })
 export class MoradoresComponent implements OnInit {
 
+  public morador: Moradores
   public moradores: Moradores[]
+
+  public id: string;
+
+  private codigorEmitter = EmitterService.get("textCodigo");
+
   pag : Number = 1;
   contador : Number = 15;
 
-  constructor(private moradoresService: MoradoresService)  { }
+  constructor(private moradoresService: MoradoresService, private router: Router)  { }
 
   ngOnInit() {
 
@@ -22,7 +31,7 @@ export class MoradoresComponent implements OnInit {
 
   getMoradores(nome: string, cpf: string, rg: string, email: string){
 
-    this.moradoresService.moradores(nome, cpf, rg, email)
+    this.moradoresService.getMoradores("0", nome, cpf, rg, email)
     .subscribe(
       data=>{
         console.log(data);
@@ -32,6 +41,14 @@ export class MoradoresComponent implements OnInit {
       }
     );
     return this.moradores;
+
+  }
+
+  getIdMorador(codigo: string){
+
+    console.log(`Código enviado: ${codigo}`)
+    this.codigorEmitter.emit({ "codigo": codigo });
+    this.router.navigate([`/morador-update`])
 
   }
 

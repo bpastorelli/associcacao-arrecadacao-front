@@ -31,6 +31,9 @@ import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
 import { MoradorSummaryComponent } from './morador-summary/morador-summary.component';
 import { MoradoresGridComponent } from './moradores/moradores-grid/moradores-grid.component';
+import { MoradorUpdateComponent } from './moradores/morador-update/morador-update.component';
+import { MoradorUpdateService } from './moradores/morador-update/morador-update.service';
+import { EmitterService } from './emitter.service';
 
 
 @NgModule({
@@ -53,7 +56,8 @@ import { MoradoresGridComponent } from './moradores/moradores-grid/moradores-gri
     InputComponent,
     RadioComponent,
     MoradorSummaryComponent,
-    MoradoresGridComponent
+    MoradoresGridComponent,
+    MoradorUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,7 @@ import { MoradoresGridComponent } from './moradores/moradores-grid/moradores-gri
     NgxPaginationModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [MoradorService, MoradoresService, ResidenciasService, RestaurantsService, ShoppingCartService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [EmitterService, MoradorService, MoradorUpdateService, MoradoresService, ResidenciasService, RestaurantsService, ShoppingCartService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

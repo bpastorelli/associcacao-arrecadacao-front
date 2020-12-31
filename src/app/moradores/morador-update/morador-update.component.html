@@ -1,0 +1,85 @@
+<section class="content-header">
+</section>
+
+<section class="content">
+  <section class="invoice">
+
+        <form #form="ngForm" novalidate>
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i></i> Alterar Morador
+              </h2>
+            </div>
+          </div>
+
+          <div class="row invoice-info">
+
+            <div class="col-xs-12">
+              <p class="lead">Código:</p>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+              <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código">
+                <input class="form-control" type="text" #idMorador name="id" ngModel required maxlength="11" disabled placeholder="Código" pattern="^[0-9]*$" autocomplete="off">
+              </mt-input-container>
+            </div>
+
+            <div class="col-xs-12">
+              <p class="lead">Dados pessoais:</p>
+            </div>
+
+            <div  class="col-sm-6 col-xs-12">
+              <mt-input-container errorMessage="Campo obrigatório com mínimo 10 caracteres" label="Nome">
+                <input class="form-control" name="nome" type="text" ngModel required minlength="10" placeholder="Nome" autocomplete="off">
+              </mt-input-container>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+              <mt-input-container errorMessage="Campo obrigatório e somente números" label="CPF">
+                <input class="form-control" name="cpf" ngModel required maxlength="11" placeholder="CPF" pattern="^[0-9]*$" autocomplete="off">
+              </mt-input-container>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+              <mt-input-container errorMessage="Campo obrigatório e somente números" label="RG">
+                <input class="form-control" name="rg" ngModel required minlength="5" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
+              </mt-input-container>
+            </div>
+
+          <div class="col-xs-12">
+            <p class="lead">Contatos:</p>
+          </div>
+
+          <div class="col-sm-4 col-xs-6">
+            <mt-input-container errorMessage="Campo obrigatório com mínimo 5 caracteres" label="e-mail">
+              <input class="form-control" name="email" ngModel required minlength="5" placeholder="e-mail" autocomplete="off">
+            </mt-input-container>
+          </div>
+
+          <div class="col-sm-2 col-xs-6">
+            <div class="form-group">
+              <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Telefone</label>
+              <input type="text" class="form-control" name="telefone" ngModel id="inputTelefone" placeholder="Telefone">
+            </div>
+          </div>
+
+          <div class="col-sm-2 col-xs-6">
+            <mt-input-container errorMessage="Campo obrigatório com mínimo 11 caracteres" label="Celular">
+              <input class="form-control" name="celular" ngModel required minlength="11" placeholder="Celular" autocomplete="off">
+            </mt-input-container>
+          </div>
+
+        <!-- /.row -->
+        </div>
+        </form>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button (click)="putMorador(form.value)" class="btn btn-success pull-right"
+            [disabled]="!form.valid"><i></i> Atualizar Cadastro
+            </button>
+          </div>
+        </div>
+
+    </section>
+</section>
