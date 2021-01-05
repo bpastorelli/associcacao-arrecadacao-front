@@ -1,6 +1,5 @@
-import { MoradorUpdateComponent } from './morador-update/morador-update.component';
-import { Router } from '@angular/router';
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { Router, Params, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import { Moradores } from './../moradores/moradores.model';
 import { MoradoresService } from './moradores.service';
 import { EmitterService } from './../emitter.service';
@@ -9,6 +8,7 @@ import { EmitterService } from './../emitter.service';
   selector: 'mt-moradores',
   templateUrl: './moradores.component.html'
 })
+
 export class MoradoresComponent implements OnInit {
 
   public morador: Moradores
@@ -16,12 +16,12 @@ export class MoradoresComponent implements OnInit {
 
   public id: string;
 
-  private codigorEmitter = EmitterService.get("textCodigo");
+  private codigoEmitter = EmitterService.get("textCodigo");
 
   pag : Number = 1;
   contador : Number = 15;
 
-  constructor(private moradoresService: MoradoresService, private router: Router)  { }
+  constructor(private moradoresService: MoradoresService, private router: Router, private _route: ActivatedRoute)  { }
 
   ngOnInit() {
 
@@ -47,8 +47,8 @@ export class MoradoresComponent implements OnInit {
   getIdMorador(codigo: string){
 
     console.log(`Código enviado: ${codigo}`)
-    this.codigorEmitter.emit({ "codigo": codigo });
-    this.router.navigate([`/morador-update`])
+    //this.codigoEmitter.emit({"codigo": codigo });
+    this.router.navigate([`/morador-update/`, codigo])
 
   }
 

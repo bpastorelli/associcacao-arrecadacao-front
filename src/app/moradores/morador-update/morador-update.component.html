@@ -14,14 +14,11 @@
           </div>
 
           <div class="row invoice-info">
-
             <div class="col-xs-12">
               <p class="lead">Código:</p>
             </div>
             <div class="col-sm-2 col-xs-6">
-              <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código">
-                <input class="form-control" type="text" #idMorador name="id" ngModel required maxlength="11" disabled placeholder="Código" pattern="^[0-9]*$" autocomplete="off">
-              </mt-input-container>
+              <input  class="form-control"  #id name="id" maxlength="11" disabled placeholder="Código" pattern="^[0-9]*$" autocomplete="off">
             </div>
 
             <div class="col-xs-12">
@@ -30,7 +27,7 @@
 
             <div  class="col-sm-6 col-xs-12">
               <mt-input-container errorMessage="Campo obrigatório com mínimo 10 caracteres" label="Nome">
-                <input class="form-control" name="nome" type="text" ngModel required minlength="10" placeholder="Nome" autocomplete="off">
+                <input class="form-control" name="nome" type="nome" [value]="" type="nome" ngModel required minlength="10" placeholder="Nome" autocomplete="off">
               </mt-input-container>
             </div>
 
@@ -71,7 +68,6 @@
 
         <!-- /.row -->
         </div>
-        </form>
 
         <div class="row">
           <div class="col-xs-12">
@@ -80,6 +76,8 @@
             </button>
           </div>
         </div>
+
+      </form>
 
     </section>
 </section>
