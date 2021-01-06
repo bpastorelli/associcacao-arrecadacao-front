@@ -6,7 +6,7 @@
 
 
 <section class="content">
-    <table class="table table-bordered">
+    <table class="table-striped">
       <thead>
         <tr>
             <th><span>ID</span></th>
@@ -22,23 +22,25 @@
       </thead>
       <tbody>
         <tr *ngFor="let residencia of residencias | paginate: { itemsPerPage: contador, currentPage: pag }">
-          <td>{{ residencia.id}}</td>
-          <td>{{ residencia.matricula }}</td>
+          <td class="textCenter">{{ residencia.id}}</td>
+          <td class="textCenter">{{ residencia.matricula }}</td>
           <td>{{ residencia.endereco }}</td>
-          <td>{{ residencia.numero }}</td>
+          <td class="textCenter">{{ residencia.numero }}</td>
           <td>{{ residencia.complemento }}</td>
           <td>{{ residencia.bairro }}</td>
-          <td>{{ residencia.cep }}</td>
+          <td class="textCenter">{{ residencia.cep }}</td>
           <td>{{ residencia.cidade }}</td>
-          <td>{{ residencia.uf }}</td>
+          <td class="textCenter">{{ residencia.uf }}</td>
         </tr>
       </tbody>
     </table>
     <!--inclindo o controle de paginação.-->
-    <div class="text-right">
-      <pagination-controls (pageChange)="pageChanged($event)" 
-        previousLabel="Anterior"
-        nextLabel="Próximo"></pagination-controls>
+    <div style="padding: 20px;">
+      <div class="text-right">
+        <pagination-controls (pageChange)="pageChanged($event)"
+          previousLabel="Anterior"
+          nextLabel="Próximo"></pagination-controls>
+      </div>
     </div>
 </section>
 

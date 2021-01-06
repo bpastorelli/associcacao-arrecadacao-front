@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Router, Params, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import { Moradores } from './../moradores/moradores.model';
 import { MoradoresService } from './moradores.service';
 
@@ -6,13 +7,18 @@ import { MoradoresService } from './moradores.service';
   selector: 'mt-moradores',
   templateUrl: './moradores.component.html'
 })
+
 export class MoradoresComponent implements OnInit {
 
+  public morador: Moradores
   public moradores: Moradores[]
-  pag : Number = 1;
-  contador : Number = 10;
 
-  constructor(private moradoresService: MoradoresService)  { }
+  public id: string;
+
+  pag : Number = 1;
+  contador : Number = 15;
+
+  constructor(private moradoresService: MoradoresService, private router: Router, private _route: ActivatedRoute)  { }
 
   ngOnInit() {
 
@@ -22,7 +28,7 @@ export class MoradoresComponent implements OnInit {
 
   getMoradores(nome: string, cpf: string, rg: string, email: string){
 
-    this.moradoresService.moradores(nome, cpf, rg, email)
+    this.moradoresService.getMoradores("0", nome, cpf, rg, email)
     .subscribe(
       data=>{
         console.log(data);
@@ -32,6 +38,13 @@ export class MoradoresComponent implements OnInit {
       }
     );
     return this.moradores;
+
+  }
+
+  getIdMorador(codigo: string){
+
+    console.log(`Código enviado: ${codigo}`)
+    this.router.navigate([`/morador-edit/`, codigo])
 
   }
 

@@ -108,6 +108,11 @@ body {
   font-size: 18px;
 }
 
+th{
+  background-color: rgb(212, 212, 212);
+  border: black
+}
+
 /*
  * Component: Menu Item
  * -------------------
@@ -123,7 +128,7 @@ body {
   margin-bottom: 15px;
 }
 .menu-item-info-box small {
-  font-size: 14px;
+  font-size: 10px;
 }
 .menu-item-info-box .progress {
   background: rgba(0, 0, 0, 0.2);
@@ -260,4 +265,25 @@ body {
 
 .has-error-block {
   color: #dd4b39;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color:LightSkyBlue;
+ }
+
+ table, th, td {
+  border: 1px solid silver;
+  padding: 4px;
+}
+
+ table {
+  width: 100%;
+}
+th{
+  text-align: center;
+}
+
+.textCenter{
+  text-align: center;
 }

@@ -10,7 +10,7 @@ export class ResidenciasComponent implements OnInit {
 
   public residencias: Residencia[]
   pag : Number = 1 ;
-  contador : Number = 10;
+  contador : Number = 15;
 
   constructor(private residenciasService: ResidenciasService) { }
 

@@ -1,0 +1,72 @@
+<section class="content-header">
+</section>
+
+<section class="content">
+  <section class="invoice" >
+
+        <form #form="ngForm" novalidate *ngFor="let morador of moradores">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i></i> Alterar Morador
+              </h2>
+            </div>
+          </div>
+
+          <div class="row invoice-info">
+            <div class="col-xs-12">
+              <p class="lead">Código:</p>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+              <input  class="form-control" type="text" [(ngModel)]="morador.id"  #id name="id" maxlength="11" disabled placeholder="Código" pattern="^[0-9]*$" autocomplete="off">
+            </div>
+
+            <div class="col-xs-12">
+              <p class="lead">Dados pessoais:</p>
+            </div>
+
+            <div  class="col-sm-6 col-xs-12">
+              <input class="form-control" type="text" [(ngModel)]="morador.nome" #nome name="nome" required minlength="10" placeholder="Nome" autocomplete="off">
+            </div>
+
+            <div  class="col-sm-3 col-xs-6">
+              <input class="form-control" type="text" [(ngModel)]="morador.cpf" #cpf name="cpf" required minlength="10" placeholder="CPF" autocomplete="off">
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+              <input class="form-control" name="rg" [(ngModel)]="morador.rg" #rg required minlength="5" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
+            </div>
+
+          <div class="col-xs-12">
+            <p class="lead">Contatos:</p>
+          </div>
+
+          <div class="col-sm-4 col-xs-6">
+            <input class="form-control" name="email" [(ngModel)]="morador.email" #email required minlength="5" placeholder="e-mail" autocomplete="off">
+          </div>
+
+          <div class="col-sm-2 col-xs-6">
+            <div class="form-group">
+              <input type="text" class="form-control" name="telefone" [(ngModel)]="morador.telefone" #telefone placeholder="Telefone">
+            </div>
+          </div>
+
+          <div class="col-sm-2 col-xs-6">
+            <input class="form-control" name="celular" [(ngModel)]="morador.celular" #celular required minlength="11" placeholder="Celular" autocomplete="off">
+          </div>
+
+        <!-- /.row -->
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button (click)="putMorador(form.value, id.value)" class="btn btn-success pull-right"
+            [disabled]="!form.valid"><i></i> Atualizar Cadastro
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+    </section>
+</section>
