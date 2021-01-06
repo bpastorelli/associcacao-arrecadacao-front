@@ -1,4 +1,3 @@
-import { MoradorEditSummaryComponent } from './morador-summary/morador-edit-summary.component copy';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -31,6 +30,7 @@ import { MoradorComponent } from './moradores/morador/morador.component';
 import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
 import { MoradorSummaryComponent } from './morador-summary/morador-summary.component';
+import { MoradorEditSummaryComponent } from './morador-summary/morador-edit-summary.component';
 import { MoradoresGridComponent } from './moradores/moradores-grid/moradores-grid.component';
 import { EmitterService } from './emitter.service';
 import { MoradorEditComponent } from './moradores/morador-edit/morador-edit.component';

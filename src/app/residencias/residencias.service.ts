@@ -14,17 +14,9 @@ export class ResidenciasService {
 
   constructor(private http: Http){}
 
-  residencias(pag:number, qtde: number): Observable<Residencia[]> {
+  residencias(id: string, matricula: string, endereco: string, numero: string): Observable<Residencia[]> {
 
-    return this.http.get(`${MEAT_API}/associados/residencia?id=0&matricula=&endereco=&numero=&pag=0&ord=id&dir=ASC&size=1000000`)
-        .map(response => response.json())
-        .catch(ErrorHandler.handleError)
-
-  }
-
-  residenciasById(id: string): Observable<Residencia[]>{
-
-    return this.http.get(`${MEAT_API}/associados/residencia?id=${id}&matricula=&endereco=&numero=&pag=0&ord=id&dir=ASC&size=1000000`)
+    return this.http.get(`${MEAT_API}/associados/residencia/filtro?id=${id}&matricula=${matricula}&endereco=${endereco}&numero=${numero}&pag=0&ord=id&dir=ASC&size=1000000`)
         .map(response => response.json())
         .catch(ErrorHandler.handleError)
 

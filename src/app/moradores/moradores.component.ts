@@ -1,4 +1,4 @@
-import { Router, Params, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { Moradores } from './../moradores/moradores.model';
 import { MoradoresService } from './moradores.service';
@@ -10,8 +10,7 @@ import { MoradoresService } from './moradores.service';
 
 export class MoradoresComponent implements OnInit {
 
-  public morador: Moradores
-  public moradores: Moradores[]
+  @Input() moradores: Moradores[]
 
   public id: string;
 
@@ -22,13 +21,13 @@ export class MoradoresComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getMoradores(null, null, null, null)
+    this.getMoradores("0", null, null, null, null)
 
   }
 
-  getMoradores(nome: string, cpf: string, rg: string, email: string){
+  getMoradores(codigo: string, nome: string, cpf: string, rg: string, email: string){
 
-    this.moradoresService.getMoradores("0", nome, cpf, rg, email)
+    this.moradoresService.getMoradores(codigo, nome, cpf, rg, email)
     .subscribe(
       data=>{
         console.log(data);

@@ -1,3 +1,5 @@
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { Component, OnInit } from '@angular/core';
 import { Residencia } from './residencia.model';
 import { ResidenciasService } from './residencias.service';
@@ -9,20 +11,21 @@ import { ResidenciasService } from './residencias.service';
 export class ResidenciasComponent implements OnInit {
 
   public residencias: Residencia[]
+
   pag : Number = 1 ;
   contador : Number = 15;
 
-  constructor(private residenciasService: ResidenciasService) { }
+  constructor(private residenciasService: ResidenciasService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
-    this.getResidencias(this.pag, this.contador);
+    this.getResidencias("0", null, null, "0");
 
   }
 
-  getResidencias(pag, qtde){
+  getResidencias(codigo: string, matricula: string, endereco: string, numero: string){
 
-    this.residenciasService.residencias(pag, qtde)
+    this.residenciasService.residencias(codigo, matricula, endereco, numero)
     .subscribe(
       data=>{
         console.log(data);
@@ -32,6 +35,13 @@ export class ResidenciasComponent implements OnInit {
       }
     );
     return this.residencias;
+
+  }
+
+  getIdResidencia(codigo: string){
+
+    console.log(`Código enviado: ${codigo}`)
+    this.router.navigate([`/morador/residencia/`, codigo])
 
   }
 

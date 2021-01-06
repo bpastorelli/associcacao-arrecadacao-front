@@ -12,10 +12,9 @@ import { Moradores } from './../../moradores/moradores.model';
 })
 
 export class MoradorEditComponent implements OnInit {
-//@ViewChild('moradorForm') public createMoradorForm: NgForm;
 
-    public moradorEdit: MoradorEdit;
     public moradores: Moradores[]
+    public moradorEdit: MoradorEdit;
 
     constructor(
         private router: Router,
@@ -36,7 +35,8 @@ export class MoradorEditComponent implements OnInit {
       this.moradorEditService.putMorador(morador, id)
         .subscribe((id: string) => {
           this.router.navigate([`/morador-edit-summary`]);
-          console.log(`Morador cadastrado: ${id}`);
+      }, err=>{
+        console.log(err);
       });
       console.log(morador);
 

@@ -59,12 +59,9 @@
             </mt-input-container>
           </div>
 
-          <div class="col-xs-12">
-            <p class="lead">Código da Residência:</p>
-          </div>
           <div class="col-sm-2 col-xs-6">
             <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código Residência">
-              <input class="form-control" name="residenciaId" ngModel required minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
+              <input class="form-control" type="hidden" name="residenciaId" [(ngModel)]="residenciaId" required minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
             </mt-input-container>
           </div>
 
