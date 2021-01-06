@@ -1,18 +1,16 @@
 import { ErrorHandler } from './../../app.error-handler';
 import { MEAT_API } from './../../app.api';
 import { Observable } from 'rxjs/Observable';
-import { Moradores } from './../moradores.model';
+import { MoradorEdit } from './morador-edit.model';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class MoradorUpdateService {
-
-  id: string
+export class MoradorEditService {
 
   constructor(private http: Http){}
 
-  putMorador(morador: Moradores, id: string) : Observable<string> {
+  putMorador(morador: MoradorEdit, id: string) : Observable<string> {
 
     const headers = new Headers()
     headers.append('Content-Type','application/json')
@@ -28,7 +26,7 @@ export class MoradorUpdateService {
 
   }
 
-  getMorador(id: string){
+  getMorador(id: string) : Observable<MoradorEdit>{
 
     return this.http.get(`${MEAT_API}/associados/morador/id/${id}`)
         .map(response => response.json())

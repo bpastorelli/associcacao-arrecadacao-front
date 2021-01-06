@@ -1,4 +1,4 @@
-export interface Moradores {
+export interface MoradorEdit {
 
     id: string,
     nome: string,

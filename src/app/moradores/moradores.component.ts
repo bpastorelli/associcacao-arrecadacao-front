@@ -2,7 +2,6 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { Moradores } from './../moradores/moradores.model';
 import { MoradoresService } from './moradores.service';
-import { EmitterService } from './../emitter.service';
 
 @Component({
   selector: 'mt-moradores',
@@ -15,8 +14,6 @@ export class MoradoresComponent implements OnInit {
   public moradores: Moradores[]
 
   public id: string;
-
-  private codigoEmitter = EmitterService.get("textCodigo");
 
   pag : Number = 1;
   contador : Number = 15;
@@ -47,8 +44,7 @@ export class MoradoresComponent implements OnInit {
   getIdMorador(codigo: string){
 
     console.log(`Código enviado: ${codigo}`)
-    //this.codigoEmitter.emit({"codigo": codigo });
-    this.router.navigate([`/morador-update/`, codigo])
+    this.router.navigate([`/morador-edit/`, codigo])
 
   }
 

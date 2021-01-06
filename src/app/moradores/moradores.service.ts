@@ -22,12 +22,4 @@ export class MoradoresService {
 
   }
 
-  getMorador(id: string): Observable<Moradores> {
-
-    return this.http.get(`${MEAT_API}/associados/morador/id/${id}`)
-        .map(response => response.json())
-        .catch(ErrorHandler.handleError)
-
-  }
-
 }

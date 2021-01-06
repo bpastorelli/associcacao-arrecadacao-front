@@ -10,12 +10,10 @@ import { Router } from '@angular/router';
 })
 export class MoradorComponent implements OnInit {
 
-  public moradorResponse: string
   public morador: Morador
   public moradores: Moradores
 
-  constructor(private moradorService: MoradorService,
-      private router: Router) { }
+  constructor(private moradorService: MoradorService, private router: Router) { }
 
   ngOnInit() {
   }
