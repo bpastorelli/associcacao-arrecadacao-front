@@ -5,6 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { MoradoresComponent } from './moradores/moradores.component';
 import { MoradorComponent } from './moradores/morador/morador.component';
 import { MoradorSummaryComponent } from './morador-summary/morador-summary.component';
+import { ResidenciaComponent } from './residencias/residencia/residencia.component';
 import { ResidenciasComponent } from './residencias/residencias.component'
 import { OrderComponent } from './order/order.component';
 import { MoradorEditComponent } from './moradores/morador-edit/morador-edit.component';
@@ -19,6 +20,7 @@ export const ROUTES: Routes = [
   {path: 'morador-edit/:codigo', component: MoradorEditComponent },
   {path: 'morador/residencia/:codigo', component: MoradorComponent },
   {path: 'residencias', component: ResidenciasComponent},
+  {path: 'residencia/:codigo', component: ResidenciaComponent},
   {path: 'about', component: AboutComponent},
   {path: 'order', component: OrderComponent}
 

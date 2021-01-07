@@ -12,6 +12,7 @@ export class ResidenciasComponent implements OnInit {
 
   public residencias: Residencia[]
 
+
   pag : Number = 1 ;
   contador : Number = 15;
 
@@ -19,7 +20,17 @@ export class ResidenciasComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getResidencias("0", null, null, "0");
+    const codigo = this.route.snapshot.paramMap.get('codigo');
+    console.log(`Vai pesquisar: ${codigo}`);
+
+
+    if(codigo === "0" || codigo === null){
+      this.getResidencias("0", null, null, "0");
+    }
+    else
+    {
+      this.getResidenciaById(codigo);
+    }
 
   }
 
@@ -38,10 +49,25 @@ export class ResidenciasComponent implements OnInit {
 
   }
 
+  getResidenciaById(codigo: string){
+
+    this.residenciasService.residencias(codigo, null, null, "0")
+    .subscribe(
+        data=>{
+          console.log(data);
+          this.residencias = data;
+        }, err=>{
+          console.log(err);
+        }
+    );
+    return this.residencias;
+
+  }
+
   getIdResidencia(codigo: string){
 
     console.log(`Código enviado: ${codigo}`)
-    this.router.navigate([`/morador/residencia/`, codigo])
+    this.router.navigate([`/residencia/`, codigo])
 
   }
 

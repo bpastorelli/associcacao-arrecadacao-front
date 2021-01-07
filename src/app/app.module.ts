@@ -24,6 +24,7 @@ import { MoradoresComponent } from './moradores/moradores.component';
 import { MoradoresService } from './moradores/moradores.service';
 import { MoradorService } from './moradores/morador/morador.service';
 import { ResidenciasService } from './residencias/residencias.service';
+import { ResidenciaService } from './residencias/residencia/residencia.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ResidenciasComponent } from './residencias/residencias.component';
 import { MoradorComponent } from './moradores/morador/morador.component';
@@ -35,6 +36,7 @@ import { MoradoresGridComponent } from './moradores/moradores-grid/moradores-gri
 import { EmitterService } from './emitter.service';
 import { MoradorEditComponent } from './moradores/morador-edit/morador-edit.component';
 import { MoradorEditService } from './moradores/morador-edit/morador.edit.service';
+import { ResidenciaComponent } from './residencias/residencia/residencia.component';
 
 
 @NgModule({
@@ -59,7 +61,8 @@ import { MoradorEditService } from './moradores/morador-edit/morador.edit.servic
     MoradorSummaryComponent,
     MoradorEditSummaryComponent,
     MoradoresGridComponent,
-    MoradorEditComponent
+    MoradorEditComponent,
+    ResidenciaComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,15 @@ import { MoradorEditService } from './moradores/morador-edit/morador.edit.servic
     NgxPaginationModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [MoradorEditService, EmitterService, MoradorService, MoradoresService, ResidenciasService, RestaurantsService, ShoppingCartService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [MoradorEditService,
+              EmitterService,
+              MoradorService,
+              MoradoresService,
+              ResidenciasService,
+              RestaurantsService,
+              ShoppingCartService,
+              ResidenciaService,
+            {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
