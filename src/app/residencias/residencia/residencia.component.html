@@ -19,7 +19,7 @@
           <div class="row invoice-info">
 
             <div class="col-xs-12">
-              <p class="lead">Dados cadastrais:</p>
+              <p class="control-label">Matrícula:</p>
             </div>
             <div class="col-sm-2 col-xs-12">
               <mt-input-container errorMessage="Campo obrigatório!" label="Matrícula">
@@ -28,7 +28,7 @@
             </div>
 
             <div class="col-xs-12">
-              <p class="lead">Endereço completo:</p>
+              <p class="control-label">Endereço completo:</p>
             </div>
 
             <div class="col-sm-2 col-xs-6">
@@ -39,7 +39,7 @@
 
             <div class="col-sm-6 col-xs-6">
               <mt-input-container errorMessage="Campo obrigatório!" label="Endereço">
-                <input class="form-control" #endereco type="text" name="endereco" [(ngModel)]="residencia.endereco" required maxlength="11" placeholder="Endereço" autocomplete="off">
+                <input class="form-control" #endereco type="text" name="endereco" [(ngModel)]="residencia.endereco" required maxlength="100" placeholder="Endereço" autocomplete="off">
               </mt-input-container>
             </div>
 
@@ -49,27 +49,39 @@
               </mt-input-container>
             </div>
 
-            <div class="col-sm-4 col-xs-6">
-              <input class="form-control" #complemento name="complemento" [(ngModel)]="residencia.complemento" minlength="8" placeholder="Complemento" autocomplete="off">
+            <div class="col-sm-4 col-xs-12">
+              <input class="form-control" #complemento name="complemento" [(ngModel)]="residencia.complemento" maxlength="50" placeholder="Complemento" autocomplete="off">
             </div>
 
-          <div class="col-sm-4 col-xs-6">
-            <mt-input-container errorMessage="Campo obrigatório com mínimo 5 caracteres" label="Cidade">
-              <input class="form-control" #cidade name="cidade" [(ngModel)]="residencia.cidade" required minlength="8" placeholder="Cidade" autocomplete="off">
-            </mt-input-container>
-          </div>
+            <div class="col-xs-12">
+              <p class="control-label">Bairro:</p>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <mt-input-container errorMessage="Campo obrigatório!" label="Bairro">
+                <input class="form-control" #bairro name="bairro" [(ngModel)]="residencia.bairro" required maxlength="50" placeholder="Bairro" autocomplete="off">
+              </mt-input-container>
+            </div>
 
-          <div class="col-sm-1 col-xs-6">
-            <mt-input-container errorMessage="Campo obrigatório com mínimo 5 caracteres" label="UF">
-              <input class="form-control" #uf name="uf" [(ngModel)]="residencia.uf" required minlength="8" placeholder="UF" autocomplete="off">
-            </mt-input-container>
-          </div>
+            <div class="col-xs-12">
+              <p class="control-label">Cidade:</p>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <mt-input-container errorMessage="Campo obrigatório com mínimo 5 caracteres" label="Cidade">
+                <input class="form-control" #cidade name="cidade" [(ngModel)]="residencia.cidade" required maxlength="50" placeholder="Cidade" autocomplete="off">
+              </mt-input-container>
+            </div>
 
-          <div *ngIf="residenciaId != '0'" class="col-sm-1 col-xs-6">
-            <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código Residência">
-              <input class="form-control" type="hidden" disabled name="id" [(ngModel)]="residencia.id"  required minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
-            </mt-input-container>
-          </div>
+            <div class="col-sm-1 col-xs-6">
+              <mt-input-container errorMessage="Campo obrigatório!" label="UF">
+                <input class="form-control" #uf name="uf" [(ngModel)]="residencia.uf" required minlength="2" placeholder="UF" autocomplete="off">
+              </mt-input-container>
+            </div>
+
+            <div class="col-sm-1 col-xs-6">
+              <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código Residência">
+                <input class="form-control" type="hidden" disabled name="id" #id [(ngModel)]="residencia.id" minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
+              </mt-input-container>
+            </div>
 
         <!-- /.row -->
         </div>
@@ -81,7 +93,7 @@
             </button>
           </div>
           <div *ngIf="residenciaId != '0'" class="col-xs-12">
-            <button (click)="postResidencia(form.value)" class="btn btn-success pull-right"
+            <button (click)="putResidencia(form.value, id.value)" class="btn btn-success pull-right"
             [disabled]="!form.valid"><i></i> Atualizar Cadastro
             </button>
           </div>

@@ -55,8 +55,8 @@
             <tr *ngFor="let residencia of residencias | paginate: { itemsPerPage: contador, currentPage: pag }">
               <td class="textCenter"><div (click)="getIdResidencia(residencia.id)">{{residencia.id}}</div></td>
               <td class="textCenter"><div (click)="getIdResidencia(residencia.id)">{{ residencia.matricula }}</div></td>
-              <td>{{ residencia.endereco }}</td>
-              <td class="textCenter">{{ residencia.numero }}</td>
+              <td><div (click)="getIdResidencia(residencia.id)">{{ residencia.endereco }}</div></td>
+              <td class="textCenter"><div (click)="getIdResidencia(residencia.id)">{{ residencia.numero }}</div></td>
               <td>{{ residencia.complemento }}</td>
               <td>{{ residencia.bairro }}</td>
               <td class="textCenter">{{ residencia.cep }}</td>

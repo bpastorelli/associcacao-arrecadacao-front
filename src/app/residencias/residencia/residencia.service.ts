@@ -21,7 +21,23 @@ export class ResidenciaService {
         , JSON.stringify(residencia)
         , new RequestOptions({headers: headers}))
         .map(response => response.json())
-        .map(morador => morador.id)
+        .map(residencia => residencia.id)
+        .catch(ErrorHandler.handleError)
+
+  }
+
+  putResidencia(residencia: Residencia, id: string): Observable<string>{
+
+    const headers = new Headers()
+    headers.append('Content-Type','application/json')
+
+    console.log("Dados:" + JSON.stringify(residencia))
+
+    return this.http.put(`${MEAT_API}/associados/residencia/${id}`
+        , JSON.stringify(residencia)
+        , new RequestOptions({headers: headers}))
+        .map(response => response.json())
+        .map(residencia => residencia.id)
         .catch(ErrorHandler.handleError)
 
   }

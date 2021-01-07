@@ -33,6 +33,20 @@ export class ResidenciaComponent implements OnInit {
 
   }
 
+  putResidencia(residencia: Residencia, id: string){
+
+    console.log(`Código de residecia ${id}`)
+
+    this.residenciaService.putResidencia(residencia, id)
+      .subscribe((id: string) => {
+        this.router.navigate([`/morador-edit-summary`]);
+  }, err=>{
+    console.log(err);
+  });
+  console.log(residencia);
+
+  }
+
   getResidenciaById(codigo: string) {
 
     this.residenciasService.residencias(codigo, null, null, "0")

@@ -34,6 +34,7 @@ export class MoradorEditComponent implements OnInit {
 
       this.moradorEditService.putMorador(morador, id)
         .subscribe((id: string) => {
+          console.log(`Id da residencia ${id}`)
           this.router.navigate([`/morador-edit-summary`]);
       }, err=>{
         console.log(err);
