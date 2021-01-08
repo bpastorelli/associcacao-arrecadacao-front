@@ -2,7 +2,7 @@ import { Moradores } from './../moradores.model';
 import { MoradorService } from './morador.service';
 import { Component, OnInit } from '@angular/core';
 import { Morador } from './../morador/morador.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'mt-morador',
@@ -10,12 +10,18 @@ import { Router } from '@angular/router';
 })
 export class MoradorComponent implements OnInit {
 
+
+  public residenciaId: string
   public morador: Morador
   public moradores: Moradores
 
-  constructor(private moradorService: MoradorService, private router: Router) { }
+  constructor(private moradorService: MoradorService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.residenciaId = this.route.snapshot.paramMap.get('codigo');
+    console.log(`residencia id ${this.residenciaId}`)
+
   }
 
   checkMorador(morador: Morador){

@@ -1,7 +1,6 @@
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MoradorEdit } from './../morador-edit/morador-edit.model';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MoradorEditService } from './morador.edit.service';
 import { MoradoresService } from './../moradores.service';
 import { Moradores } from './../../moradores/moradores.model';
@@ -12,10 +11,10 @@ import { Moradores } from './../../moradores/moradores.model';
 })
 
 export class MoradorEditComponent implements OnInit {
-//@ViewChild('moradorForm') public createMoradorForm: NgForm;
 
+    public moradores: Moradores[];
     public moradorEdit: MoradorEdit;
-    public moradores: Moradores[]
+    public message: string;
 
     constructor(
         private router: Router,
@@ -34,11 +33,16 @@ export class MoradorEditComponent implements OnInit {
     putMorador(morador: MoradorEdit, id: string){
 
       this.moradorEditService.putMorador(morador, id)
-        .subscribe((id: string) => {
+        .subscribe(
+            resp => {
+          this.message = resp;
           this.router.navigate([`/morador-edit-summary`]);
-          console.log(`Morador cadastrado: ${id}`);
+      },
+      (err) =>{
+        if(err.status == 400) {
+          this.message ='Produto não localizado.';
+        }
       });
-      console.log(morador);
 
     }
 
@@ -47,10 +51,9 @@ export class MoradorEditComponent implements OnInit {
       this.moradoresService.getMoradores(codigo, null, null, null, null)
       .subscribe(
         data=>{
-          console.log(data);
           this.moradores = data;
         }, err=>{
-          console.log(err);
+          this.message = err;
         }
       );
       return this.moradores;

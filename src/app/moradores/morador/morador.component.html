@@ -15,7 +15,7 @@
 
           <div class="row invoice-info">
             <div class="col-xs-12">
-              <p class="lead">Dados pessoais:</p>
+              <p class="control-label">Dados pessoais:</p>
             </div>
 
             <div class="col-sm-6 col-xs-12">
@@ -32,13 +32,13 @@
 
             <div class="col-sm-3 col-xs-6">
               <mt-input-container errorMessage="Campo obrigatório e somente números" label="RG">
-                <input class="form-control" name="rg" ngModel required minlength="5" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
+                <input class="form-control" name="rg" ngModel required maxlength="11" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
               </mt-input-container>
             </div>
 
-          <div class="col-xs-12">
-            <p class="lead">Contatos:</p>
-          </div>
+            <div class="col-xs-12">
+              <p class="control-label">Contato:</p>
+            </div>
 
           <div class="col-sm-4 col-xs-6">
             <mt-input-container errorMessage="Campo obrigatório com mínimo 5 caracteres" label="e-mail">
@@ -49,22 +49,19 @@
           <div class="col-sm-2 col-xs-6">
             <div class="form-group">
               <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Telefone</label>
-              <input type="text" class="form-control" name="telefone" ngModel id="inputTelefone" placeholder="Telefone">
+              <input type="text" class="form-control" name="telefone" ngModel maxlength="11" id="inputTelefone" placeholder="Telefone">
             </div>
           </div>
 
           <div class="col-sm-2 col-xs-6">
             <mt-input-container errorMessage="Campo obrigatório com mínimo 11 caracteres" label="Celular">
-              <input class="form-control" name="celular" ngModel required minlength="11" placeholder="Celular" autocomplete="off">
+              <input class="form-control" name="celular" ngModel required maxlength="11" placeholder="Celular" autocomplete="off">
             </mt-input-container>
           </div>
 
-          <div class="col-xs-12">
-            <p class="lead">Código da Residência:</p>
-          </div>
           <div class="col-sm-2 col-xs-6">
             <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código Residência">
-              <input class="form-control" name="residenciaId" ngModel required minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
+              <input class="form-control" type="hidden" name="residenciaId" [(ngModel)]="residenciaId" required minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
             </mt-input-container>
           </div>
 

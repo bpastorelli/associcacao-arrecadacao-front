@@ -1,3 +1,5 @@
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { Component, OnInit } from '@angular/core';
 import { Residencia } from './residencia.model';
 import { ResidenciasService } from './residencias.service';
@@ -9,20 +11,32 @@ import { ResidenciasService } from './residencias.service';
 export class ResidenciasComponent implements OnInit {
 
   public residencias: Residencia[]
+
+
   pag : Number = 1 ;
   contador : Number = 15;
 
-  constructor(private residenciasService: ResidenciasService) { }
+  constructor(private residenciasService: ResidenciasService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
-    this.getResidencias(this.pag, this.contador);
+    const codigo = this.route.snapshot.paramMap.get('codigo');
+    console.log(`Vai pesquisar: ${codigo}`);
+
+
+    if(codigo === "0" || codigo === null){
+      this.getResidencias("0", null, null, "0");
+    }
+    else
+    {
+      this.getResidenciaById(codigo);
+    }
 
   }
 
-  getResidencias(pag, qtde){
+  getResidencias(codigo: string, matricula: string, endereco: string, numero: string){
 
-    this.residenciasService.residencias(pag, qtde)
+    this.residenciasService.residencias(codigo, matricula, endereco, numero)
     .subscribe(
       data=>{
         console.log(data);
@@ -34,6 +48,33 @@ export class ResidenciasComponent implements OnInit {
     return this.residencias;
 
   }
+
+  getResidenciaById(codigo: string){
+
+    this.residenciasService.residencias(codigo, null, null, "0")
+    .subscribe(
+        data=>{
+          console.log(data);
+          this.residencias = data;
+        }, err=>{
+          console.log(err);
+        }
+    );
+    return this.residencias;
+
+  }
+
+  editResidencia(codigo: string){
+
+    this.router.navigate([`/residencia/`, codigo])
+
+  }
+
+incluirMorador(codigo: string){
+
+  this.router.navigate([`morador/residencia/`, codigo])
+
+}
 
   pageChanged(event){
     this.pag = event;

@@ -14,15 +14,12 @@
           </div>
 
           <div class="row invoice-info">
-            <div class="col-xs-12">
-              <p class="lead">Código:</p>
-            </div>
             <div class="col-sm-2 col-xs-6">
-              <input  class="form-control" type="text" [(ngModel)]="morador.id"  #id name="id" maxlength="11" disabled placeholder="Código" pattern="^[0-9]*$" autocomplete="off">
+              <input  class="form-control" type="hidden" [(ngModel)]="morador.id"  #id name="id" maxlength="11" disabled placeholder="Código" pattern="^[0-9]*$" autocomplete="off">
             </div>
 
             <div class="col-xs-12">
-              <p class="lead">Dados pessoais:</p>
+              <p class="control-label">Dados pessoais:</p>
             </div>
 
             <div  class="col-sm-6 col-xs-12">
@@ -30,19 +27,21 @@
             </div>
 
             <div  class="col-sm-3 col-xs-6">
-              <input class="form-control" type="text" [(ngModel)]="morador.cpf" #cpf name="cpf" required minlength="10" placeholder="CPF" autocomplete="off">
+              <input class="form-control" type="text" [(ngModel)]="morador.cpf" #cpf name="cpf" disabled required minlength="10" placeholder="CPF" autocomplete="off">
             </div>
 
             <div class="col-sm-3 col-xs-6">
               <input class="form-control" name="rg" [(ngModel)]="morador.rg" #rg required minlength="5" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
             </div>
 
-          <div class="col-xs-12">
-            <p class="lead">Contatos:</p>
-          </div>
+            <div class="col-xs-12">
+              <p class="control-label">Contato:</p>
+            </div>
 
           <div class="col-sm-4 col-xs-6">
-            <input class="form-control" name="email" [(ngModel)]="morador.email" #email required minlength="5" placeholder="e-mail" autocomplete="off">
+            <mt-input-container errorMessage="Campo obrigatório!" label="e-mail">
+              <input class="form-control" name="email" [(ngModel)]="morador.email" #email required minlength="5" placeholder="e-mail" autocomplete="off">
+            </mt-input-container>
           </div>
 
           <div class="col-sm-2 col-xs-6">
@@ -52,8 +51,10 @@
           </div>
 
           <div class="col-sm-2 col-xs-6">
-            <input class="form-control" name="celular" [(ngModel)]="morador.celular" #celular required minlength="11" placeholder="Celular" autocomplete="off">
-          </div>
+            <mt-input-container errorMessage="Campo obrigatório com mínimo!" label="Celular">
+              <input class="form-control" name="celular" [(ngModel)]="morador.celular" #celular required minlength="11" placeholder="Celular" autocomplete="off">
+            </mt-input-container>
+        </div>
 
         <!-- /.row -->
         </div>
@@ -65,7 +66,7 @@
             </button>
           </div>
         </div>
-
+        <p>{{ message }}</p>
       </form>
 
     </section>
