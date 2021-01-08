@@ -49,19 +49,21 @@
                 <th>CEP</th>
                 <th>Cidade</th>
                 <th>UF</th>
+                <th></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let residencia of residencias | paginate: { itemsPerPage: contador, currentPage: pag }">
-              <td class="textCenter"><div (click)="getIdResidencia(residencia.id)">{{residencia.id}}</div></td>
-              <td class="textCenter"><div (click)="getIdResidencia(residencia.id)">{{ residencia.matricula }}</div></td>
-              <td><div (click)="getIdResidencia(residencia.id)">{{ residencia.endereco }}</div></td>
-              <td class="textCenter"><div (click)="getIdResidencia(residencia.id)">{{ residencia.numero }}</div></td>
-              <td>{{ residencia.complemento }}</td>
-              <td>{{ residencia.bairro }}</td>
-              <td class="textCenter">{{ residencia.cep }}</td>
-              <td>{{ residencia.cidade }}</td>
-              <td class="textCenter">{{ residencia.uf }}</td>
+              <td class="textCenter"><div (click)="editResidencia(residencia.id)">{{residencia.id}}</div></td>
+              <td class="textCenter"><div (click)="editResidencia(residencia.id)">{{ residencia.matricula }}</div></td>
+              <td><div (click)="editResidencia(residencia.id)">{{ residencia.endereco }}</div></td>
+              <td class="textCenter"><div (click)="editResidencia(residencia.id)">{{ residencia.numero }}</div></td>
+              <td><div (click)="editResidencia(residencia.id)">{{ residencia.complemento }}</div></td>
+              <td><div (click)="editResidencia(residencia.id)">{{ residencia.bairro }}</div></td>
+              <td class="textCenter"><div (click)="editResidencia(residencia.id)">{{ residencia.cep }}</div></td>
+              <td><div (click)="editResidencia(residencia.id)">{{ residencia.cidade }}</div></td>
+              <td class="textCenter"><div (click)="editResidencia(residencia.id)">{{ residencia.uf }}</div></td>
+              <td class="textCenter"><div (click)="incluirMorador(residencia.id)"> + Morador</div></td>
             </tr>
           </tbody>
         </table>

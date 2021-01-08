@@ -64,12 +64,17 @@ export class ResidenciasComponent implements OnInit {
 
   }
 
-  getIdResidencia(codigo: string){
+  editResidencia(codigo: string){
 
-    console.log(`Código enviado: ${codigo}`)
     this.router.navigate([`/residencia/`, codigo])
 
   }
+
+incluirMorador(codigo: string){
+
+  this.router.navigate([`morador/residencia/`, codigo])
+
+}
 
   pageChanged(event){
     this.pag = event;
