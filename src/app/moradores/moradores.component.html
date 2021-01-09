@@ -60,13 +60,13 @@
           </thead>
           <tbody>
             <tr class="row" *ngFor="let morador of moradores | paginate: { itemsPerPage: contador, currentPage: pag }">
-              <td class="textCenter"><div (click)="getIdMorador(morador.id)">{{morador.id}}</div></td>
-              <td><div (click)="getIdMorador(morador.id)">{{ morador.nome }}</div></td>
-              <td><div (click)="getIdMorador(morador.id)">{{ morador.email }}</div></td>
-              <td class="textCenter">{{ morador.cpf }}</td>
-              <td class="textCenter">{{ morador.rg }}</td>
-              <td class="textCenter">{{ morador.telefone }}</td>
-              <td class="textCenter">{{ morador.celular }}</td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{morador.id}}</div></td>
+              <td><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.nome }}</div></td>
+              <td><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.email }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.cpf }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.rg }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.telefone }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.celular }}</div></td>
             </tr>
           </tbody>
         </table>

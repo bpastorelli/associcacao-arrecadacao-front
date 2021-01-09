@@ -54,23 +54,23 @@
           </thead>
           <tbody>
             <tr *ngFor="let residencia of residencias | paginate: { itemsPerPage: contador, currentPage: pag }">
-              <td class="textCenter"><div (click)="editResidencia(residencia.id)">{{residencia.id}}</div></td>
-              <td class="textCenter"><div (click)="editResidencia(residencia.id)">{{ residencia.matricula }}</div></td>
-              <td><div (click)="editResidencia(residencia.id)">{{ residencia.endereco }}</div></td>
-              <td class="textCenter"><div (click)="editResidencia(residencia.id)">{{ residencia.numero }}</div></td>
-              <td><div (click)="editResidencia(residencia.id)">{{ residencia.complemento }}</div></td>
-              <td><div (click)="editResidencia(residencia.id)">{{ residencia.bairro }}</div></td>
-              <td class="textCenter"><div (click)="editResidencia(residencia.id)">{{ residencia.cep }}</div></td>
-              <td><div (click)="editResidencia(residencia.id)">{{ residencia.cidade }}</div></td>
-              <td class="textCenter"><div (click)="editResidencia(residencia.id)">{{ residencia.uf }}</div></td>
-              <td class="textCenter"><div (click)="incluirMorador(residencia.id)"> + Morador</div></td>
+              <td class="textCenter"><div class="pointer" (click)="editResidencia(residencia.id)">{{residencia.id}}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.matricula }}</div></td>
+              <td><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.endereco }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.numero }}</div></td>
+              <td><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.complemento }}</div></td>
+              <td><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.bairro }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.cep }}</div></td>
+              <td><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.cidade }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.uf }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="incluirMorador(residencia.id)"> + Morador</div></td>
             </tr>
           </tbody>
         </table>
         <!--inclindo o controle de paginação.-->
         <div style="padding: 20px;">
           <div class="text-right">
-            <pagination-controls (pageChange)="pageChanged($event)"
+            <pagination-controls class="pointer" (pageChange)="pageChanged($event)"
               previousLabel="Anterior"
               nextLabel="Próximo"></pagination-controls>
           </div>

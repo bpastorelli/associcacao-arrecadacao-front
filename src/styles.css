@@ -287,3 +287,7 @@ th{
 .textCenter{
   text-align: center;
 }
+
+.pointer {
+  cursor: pointer;
+}
