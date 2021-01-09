@@ -15,6 +15,9 @@ export class MoradorEditComponent implements OnInit {
     public moradores: Moradores[];
     public moradorEdit: MoradorEdit;
     public message: string;
+    public situacaoCadastral = [
+                { id: 1, label: "Ativo" },
+                { id: 0, label: "Inativo" }]
 
     constructor(
         private router: Router,

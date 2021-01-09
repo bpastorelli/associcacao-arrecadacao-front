@@ -61,10 +61,13 @@
           <p class="control-label"> Situação: </p>
         </div>
         <div class="col-sm-2 col-xs-6">
-          <select #posicao name="posicao" class="form-control">
-            <option value="1" [selected]="morador.posicao == 1">Ativo</option>
-            <option value="0" [selected]="morador.posicao == 0">Inativo</option>
-         </select>
+        <select
+            name="posicao"
+            id="posicao"
+            class="form-control"
+            [(ngModel)]="morador.posicao">
+            <option *ngFor="let situacao of situacaoCadastral" [value]="situacao.id">{{ situacao.label }}</option>
+        </select>
         </div>
 
         <!-- /.row -->
