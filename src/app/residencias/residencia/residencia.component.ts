@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { ResidenciasService } from './../residencias.service';
 import { ResidenciaService } from './../../residencias/residencia/residencia.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'mt-residencia',
@@ -10,26 +11,42 @@ import { ResidenciaService } from './../../residencias/residencia/residencia.ser
 })
 export class ResidenciaComponent implements OnInit {
 
+  form: FormGroup;
   public residenciaId: string
+  public IsCreate: boolean = true
   @Input() residencias: Residencia[]
 
-  constructor(private router: Router, private route: ActivatedRoute, private residenciaService: ResidenciaService, private residenciasService: ResidenciasService) { }
+  constructor(
+              private router: Router,
+              private route: ActivatedRoute,
+              private residenciaService: ResidenciaService,
+              private residenciasService: ResidenciasService) { }
 
   ngOnInit() {
 
     this.residenciaId = this.route.snapshot.paramMap.get('codigo');
-    this.getResidenciaById(this.residenciaId);
+
+    console.log(this.IsCreate)
+    console.log(`Residencia id ${this.residenciaId}`)
+
+    if(this.residenciaId != "create"){
+        this.IsCreate = false;
+        this.getResidenciaById(this.residenciaId);
+    }
 
   }
 
   postResidencia(residencia: Residencia){
 
+    console.log(residencia)
+
     this.residenciaService.postResidencia(residencia)
       .subscribe((id: string) => {
       console.log(`Residecia cadastrada: ${id}`);
       this.router.navigate(['/residencia-summary']);
+    }, err=>{
+      console.log(err);
     });
-    console.log(residencia);
 
   }
 

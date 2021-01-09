@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Residencia } from './residencia.model';
 import { ResidenciasService } from './residencias.service';
+import { Console } from '@angular/core/src/console';
 
 @Component({
   selector: 'mt-residencias',
@@ -20,17 +21,7 @@ export class ResidenciasComponent implements OnInit {
 
   ngOnInit() {
 
-    const codigo = this.route.snapshot.paramMap.get('codigo');
-    console.log(`Vai pesquisar: ${codigo}`);
-
-
-    if(codigo === "0" || codigo === null){
       this.getResidencias("0", null, null, "0");
-    }
-    else
-    {
-      this.getResidenciaById(codigo);
-    }
 
   }
 
@@ -78,6 +69,12 @@ incluirMorador(codigo: string){
 
   pageChanged(event){
     this.pag = event;
+  }
+
+  formatId (n, len) {
+    var num = parseInt(n, 10);
+    len = parseInt(len, 10);
+    return (isNaN(num) || isNaN(len)) ? n : ( 1e10 + "" + num ).slice(-len);
   }
 
 }

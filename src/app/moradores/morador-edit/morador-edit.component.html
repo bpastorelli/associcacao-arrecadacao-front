@@ -21,17 +21,22 @@
             <div class="col-xs-12">
               <p class="control-label"> Dados pessoais: </p>
             </div>
-
             <div  class="col-sm-6 col-xs-12">
-              <input class="form-control" type="text" [(ngModel)]="morador.nome" #nome name="nome" required minlength="10" placeholder="Nome" autocomplete="off">
+              <mt-input-container errorMessage="Campo obrigatório!" label="Nome">
+                <input class="form-control" type="text" [(ngModel)]="morador.nome" #nome name="nome" required minlength="10" placeholder="Nome" autocomplete="off">
+              </mt-input-container>
             </div>
 
-            <div  class="col-sm-3 col-xs-6">
-              <input class="form-control" type="text" [(ngModel)]="morador.cpf" #cpf name="cpf" disabled required minlength="10" placeholder="CPF" autocomplete="off">
+            <div  class="col-sm-2 col-xs-6">
+              <mt-input-container errorMessage="Campo obrigatório!" label="CPF">
+                <input class="form-control" type="text" [(ngModel)]="morador.cpf" #cpf name="cpf" disabled required minlength="10" placeholder="CPF" pattern="^[0-9]*$" autocomplete="off">
+              </mt-input-container>
             </div>
 
-            <div class="col-sm-3 col-xs-6">
-              <input class="form-control" name="rg" [(ngModel)]="morador.rg" #rg required minlength="5" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
+            <div class="col-sm-2 col-xs-6">
+              <mt-input-container errorMessage="Campo obrigatório!" label="RG">
+                <input class="form-control" name="rg" [(ngModel)]="morador.rg" #rg required minlength="5" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
+              </mt-input-container>
             </div>
 
             <div class="col-xs-12">
