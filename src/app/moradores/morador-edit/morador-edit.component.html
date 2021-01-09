@@ -19,7 +19,7 @@
             </div>
 
             <div class="col-xs-12">
-              <p class="control-label">Dados pessoais:</p>
+              <p class="control-label"> Dados pessoais: </p>
             </div>
 
             <div  class="col-sm-6 col-xs-12">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="col-xs-12">
-              <p class="control-label">Contato:</p>
+              <p class="control-label"> Contato: </p>
             </div>
 
           <div class="col-sm-4 col-xs-6">
@@ -54,6 +54,17 @@
             <mt-input-container errorMessage="Campo obrigatório com mínimo!" label="Celular">
               <input class="form-control" name="celular" [(ngModel)]="morador.celular" #celular required minlength="11" placeholder="Celular" autocomplete="off">
             </mt-input-container>
+        </div>
+
+
+        <div class="col-xs-12">
+          <p class="control-label"> Situação: </p>
+        </div>
+        <div class="col-sm-2 col-xs-6">
+          <select #posicao name="posicao" class="form-control">
+            <option value="1" [selected]="morador.posicao == 1">Ativo</option>
+            <option value="0" [selected]="morador.posicao == 0">Inativo</option>
+         </select>
         </div>
 
         <!-- /.row -->

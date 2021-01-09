@@ -32,6 +32,8 @@ export class MoradorEditComponent implements OnInit {
 
     putMorador(morador: MoradorEdit, id: string){
 
+      console.log(morador)
+
       this.moradorEditService.putMorador(morador, id)
         .subscribe(
             resp => {

@@ -14,7 +14,7 @@ export class ResidenciasComponent implements OnInit {
 
 
   pag : Number = 1 ;
-  contador : Number = 15;
+  contador : Number = 20;
 
   constructor(private residenciasService: ResidenciasService, private router: Router, private route: ActivatedRoute) { }
 
