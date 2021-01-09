@@ -43,7 +43,7 @@ export class ResidenciaComponent implements OnInit {
     this.residenciaService.postResidencia(residencia)
       .subscribe((id: string) => {
       console.log(`Residecia cadastrada: ${id}`);
-      this.router.navigate(['/residencia-summary']);
+      this.router.navigate(['/morador-summary']);
     }, err=>{
       console.log(err);
     });
