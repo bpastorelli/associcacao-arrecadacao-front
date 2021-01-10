@@ -97,10 +97,15 @@
     </section>
 
     <section class="content">
+
+      <div class="col-xs-12">
+        <p class="control-label"> <b>Moradores responsáveis:</b></p>
+
+
       <table class="table-striped">
         <thead>
           <tr class="row">
-              <th scope="col">Nome</th>
+              <th #nome scope="col">Nome</th>
               <th scope="col">E-mail</th>
               <th scope="col">Telefone</th>
               <th scope="col">Celular</th>
@@ -108,13 +113,14 @@
         </thead>
         <tbody>
           <tr class="row" *ngFor="let morador of moradoresVinculados | paginate: { itemsPerPage: contador, currentPage: pag }">
-            <td><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.nome }}</div></td>
+            <td ><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.nome }}</div></td>
             <td><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.email }}</div></td>
             <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.telefone }}</div></td>
             <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.celular }}</div></td>
           </tr>
         </tbody>
       </table>
+
 
       <!--inclindo o controle de paginação.-->
       <div style="padding: 20px;">
@@ -125,6 +131,8 @@
           ></pagination-controls>
         </div>
       </div>
+
+    </div>
     </section>
 </section>
 

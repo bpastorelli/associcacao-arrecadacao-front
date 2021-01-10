@@ -7,8 +7,9 @@ import { ResidenciaService } from './../../residencias/residencia/residencia.ser
 
 @Component({
   selector: 'mt-residencia',
-  templateUrl: './residencia.component.html'
+  templateUrl: './residencia.component.html',
 })
+
 export class ResidenciaComponent implements OnInit {
 
   public residenciaId: string

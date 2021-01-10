@@ -1,6 +1,7 @@
+import { Residencia } from './../../residencias/residencia.model';
 import { Moradores } from './../moradores.model';
 import { MoradorService } from './morador.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Morador } from './../morador/morador.model';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -13,7 +14,8 @@ export class MoradorComponent implements OnInit {
 
   public residenciaId: string
   public morador: Morador
-  public moradores: Moradores
+  @Input() moradores: Moradores
+  @Input() residenciasVinculadas: Residencia[]
 
   constructor(private moradorService: MoradorService, private router: Router, private route: ActivatedRoute) { }
 

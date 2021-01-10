@@ -1,3 +1,4 @@
+import { Residencia } from './../../residencias/residencia.model';
 import { ErrorHandler } from './../../app.error-handler';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { MEAT_API } from './../../app.api';
@@ -26,6 +27,14 @@ export class MoradorService {
         , new RequestOptions({headers: headers}))
         .map(response => response.json())
         .map(morador => morador.id)
+        .catch(ErrorHandler.handleError)
+
+  }
+
+  getResidenciasVinculadas(moradorId: string): Observable<Residencia[]>{
+
+    return this.http.get(`${MEAT_API}/associados/vinculo-residencia/residencias/morador/${moradorId}`)
+        .map(response => response.json())
         .catch(ErrorHandler.handleError)
 
   }

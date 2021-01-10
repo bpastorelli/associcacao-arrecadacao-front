@@ -61,11 +61,11 @@ export class ResidenciasComponent implements OnInit {
 
   }
 
-incluirMorador(codigo: string){
+  incluirMorador(codigo: string){
 
-  this.router.navigate([`morador/residencia/`, codigo])
+    this.router.navigate([`morador/residencia/`, codigo])
 
-}
+  }
 
   pageChanged(event){
     this.pag = event;

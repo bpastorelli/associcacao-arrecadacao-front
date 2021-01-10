@@ -37,7 +37,7 @@ import { EmitterService } from './emitter.service';
 import { MoradorEditComponent } from './moradores/morador-edit/morador-edit.component';
 import { MoradorEditService } from './moradores/morador-edit/morador.edit.service';
 import { ResidenciaComponent } from './residencias/residencia/residencia.component';
-
+import { OrderByPipe } from './OrderByPipe';
 
 @NgModule({
   declarations: [
@@ -62,7 +62,8 @@ import { ResidenciaComponent } from './residencias/residencia/residencia.compone
     MoradorEditSummaryComponent,
     MoradoresGridComponent,
     MoradorEditComponent,
-    ResidenciaComponent
+    ResidenciaComponent,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,
