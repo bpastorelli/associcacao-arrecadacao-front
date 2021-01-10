@@ -4,6 +4,8 @@ import { ErrorHandler } from './../../app.error-handler';
 import { Injectable } from '@angular/core';
 import { Residencia } from './../residencia.model';
 import { MEAT_API } from './../../app.api';
+import { Moradores } from './../../moradores/moradores.model';
+
 
 @Injectable()
 export class ResidenciaService {
@@ -38,6 +40,14 @@ export class ResidenciaService {
         , new RequestOptions({headers: headers}))
         .map(response => response.json())
         .map(residencia => residencia.id)
+        .catch(ErrorHandler.handleError)
+
+  }
+
+  getMoradoresVinculados(residenciaId: string): Observable<Moradores[]>{
+
+    return this.http.get(`${MEAT_API}/associados/vinculo-residencia/moradores/residencia/${residenciaId}`)
+        .map(response => response.json())
         .catch(ErrorHandler.handleError)
 
   }

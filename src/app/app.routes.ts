@@ -4,12 +4,12 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { MoradoresComponent } from './moradores/moradores.component';
 import { MoradorComponent } from './moradores/morador/morador.component';
-import { MoradorSummaryComponent } from './morador-summary/morador-summary.component';
+import { MoradorSummaryComponent } from './summary/morador-summary.component';
 import { ResidenciaComponent } from './residencias/residencia/residencia.component';
 import { ResidenciasComponent } from './residencias/residencias.component'
 import { OrderComponent } from './order/order.component';
 import { MoradorEditComponent } from './moradores/morador-edit/morador-edit.component';
-import { MoradorEditSummaryComponent } from './morador-summary/morador-edit-summary.component';
+import { MoradorEditSummaryComponent } from './summary/morador-edit-summary.component';
 
 export const ROUTES: Routes = [
   {path: '', component: HomeComponent},

@@ -17,7 +17,7 @@ export class MoradoresComponent implements OnInit {
   pag : Number = 1;
   contador : Number = 20;
 
-  constructor(private moradoresService: MoradoresService, private router: Router, private _route: ActivatedRoute)  { }
+  constructor(private moradoresService: MoradoresService, private router: Router)  { }
 
   ngOnInit() {
 

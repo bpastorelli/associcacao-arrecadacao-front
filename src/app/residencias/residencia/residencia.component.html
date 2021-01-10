@@ -1,8 +1,7 @@
 <section class="content-header">
-</section>
 
-<section *ngIf="!IsCreate" class="content">
-  <section class="invoice">
+    <section *ngIf="!IsCreate" class="content">
+      <section class="invoice">
         <form #formEdit="ngForm" *ngFor="let residencia of residencias" novalidate>
           <div class="row">
             <div class="col-xs-12">
@@ -96,6 +95,37 @@
         </div>
       </form>
     </section>
+
+    <section class="content">
+      <table class="table-striped">
+        <thead>
+          <tr class="row">
+              <th scope="col">Nome</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Telefone</th>
+              <th scope="col">Celular</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row" *ngFor="let morador of moradoresVinculados | paginate: { itemsPerPage: contador, currentPage: pag }">
+            <td><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.nome }}</div></td>
+            <td><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.email }}</div></td>
+            <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.telefone }}</div></td>
+            <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.celular }}</div></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!--inclindo o controle de paginação.-->
+      <div style="padding: 20px;">
+        <div class="text-right">
+          <pagination-controls class="pointer" (pageChange)="pageChanged($event)"
+              previousLabel="Anterior"
+              nextLabel="Próximo"
+          ></pagination-controls>
+        </div>
+      </div>
+    </section>
 </section>
 
 <section *ngIf="IsCreate" class="content">
@@ -188,5 +218,5 @@
         </div>
     </form>
   </section>
-
+</section>
 </section>

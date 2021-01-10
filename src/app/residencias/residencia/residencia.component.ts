@@ -1,9 +1,9 @@
+import { Moradores } from './../../moradores/moradores.model';
 import { Residencia } from './../residencia.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { ResidenciasService } from './../residencias.service';
 import { ResidenciaService } from './../../residencias/residencia/residencia.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'mt-residencia',
@@ -11,10 +11,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ResidenciaComponent implements OnInit {
 
-  form: FormGroup;
   public residenciaId: string
   public IsCreate: boolean = true
   @Input() residencias: Residencia[]
+  @Input() moradoresVinculados: Moradores[]
+
+  pag : Number = 1;
+  contador : Number = 5;
 
   constructor(
               private router: Router,
@@ -32,6 +35,7 @@ export class ResidenciaComponent implements OnInit {
     if(this.residenciaId != "create"){
         this.IsCreate = false;
         this.getResidenciaById(this.residenciaId);
+        this.getMoradoresVinculados(this.residenciaId);
     }
 
   }
@@ -77,6 +81,32 @@ export class ResidenciaComponent implements OnInit {
     );
     return this.residencias;
 
+  }
+
+  getMoradoresVinculados(codigo: string){
+
+    this.residenciaService.getMoradoresVinculados(codigo)
+      .subscribe(
+          data=>{
+              console.log(data);
+              this.moradoresVinculados = data;
+          }, err=>{
+            console.log(err);
+          }
+      );
+      return this.moradoresVinculados;
+
+  }
+
+  getIdMorador(codigo: string){
+
+    console.log(`Código enviado: ${codigo}`)
+    this.router.navigate([`/morador-edit/`, codigo])
+
+  }
+
+  pageChanged(event){
+    this.pag = event;
   }
 
 }
