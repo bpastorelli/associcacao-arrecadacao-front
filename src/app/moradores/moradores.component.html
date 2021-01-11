@@ -68,8 +68,8 @@
               <td><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.email }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ formatCPF(morador.cpf) }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.rg }}</div></td>
-              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.telefone }}</div></td>
-              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.celular }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ formatTelefone(morador.telefone) }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ formatCelular(morador.celular) }}</div></td>
             </tr>
           </tbody>
         </table>

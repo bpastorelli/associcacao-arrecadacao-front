@@ -50,9 +50,8 @@ export class MoradorEditComponent implements OnInit {
           this.router.navigate([`/morador-edit-summary`]);
       },
       (err) =>{
-        if(err.status == 400) {
-          this.message ='Produto não localizado.';
-        }
+          alert(err);
+
       });
 
     }
