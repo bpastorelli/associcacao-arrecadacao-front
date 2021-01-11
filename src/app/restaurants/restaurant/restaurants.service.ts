@@ -1,6 +1,6 @@
 import { MenuItem } from './../../restaurant-detail/menu-item/menu-item.model';
 import { ErrorHandler } from './../../app.error-handler';
-import { MEAT_API } from './../../app.api';
+import { _API } from './../../app.api';
 import { Restaurant } from "./restaurant.model";
 import { Http } from '@angular/http'
 import {Injectable} from '@angular/core';
@@ -17,7 +17,7 @@ export class RestaurantsService {
 
   restaurants(): Observable<Restaurant[]> {
 
-    return this.http.get(`${MEAT_API}/restaurants`)
+    return this.http.get(`${_API}/restaurants`)
         .map(response => response.json())
         .catch(ErrorHandler.handleError)
 
@@ -25,7 +25,7 @@ export class RestaurantsService {
 
   restaurantById(id: string): Observable<Restaurant>{
 
-    return this.http.get(`${MEAT_API}/restaurants/${id}`)
+    return this.http.get(`${_API}/restaurants/${id}`)
       .map(response => response.json())
       .catch(ErrorHandler.handleError)
 
@@ -33,7 +33,7 @@ export class RestaurantsService {
 
   reviewsOfRestaurant(id: string): Observable<any>{
 
-    return this.http.get(`${MEAT_API}/restaurants/${id}/reviews`)
+    return this.http.get(`${_API}/restaurants/${id}/reviews`)
       .map(response => response.json())
       .catch(ErrorHandler.handleError)
 
@@ -41,7 +41,7 @@ export class RestaurantsService {
 
   menuOfRestaurant(id: string): Observable<MenuItem[]>{
 
-    return this.http.get(`${MEAT_API}/restaurants/${id}/menu`)
+    return this.http.get(`${_API}/restaurants/${id}/menu`)
     .map(response => response.json())
     .catch(ErrorHandler.handleError)
 

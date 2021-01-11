@@ -9,6 +9,7 @@ export interface MoradorEdit {
     perfil: string,
     telefone: string,
     celular: string,
-    residenciaId: string
+    residenciaId: string,
+    posicao: number
 
 }

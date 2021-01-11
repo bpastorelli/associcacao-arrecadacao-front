@@ -49,6 +49,7 @@
       <table class="table-striped">
           <thead>
             <tr class="row">
+                <th style="width: 6px;" scope="col"></th>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">E-mail</th>
@@ -60,13 +61,15 @@
           </thead>
           <tbody>
             <tr class="row" *ngFor="let morador of moradores | paginate: { itemsPerPage: contador, currentPage: pag }">
-              <td class="textCenter"><div (click)="getIdMorador(morador.id)">{{morador.id}}</div></td>
-              <td><div (click)="getIdMorador(morador.id)">{{ morador.nome }}</div></td>
-              <td><div (click)="getIdMorador(morador.id)">{{ morador.email }}</div></td>
-              <td class="textCenter">{{ morador.cpf }}</td>
-              <td class="textCenter">{{ morador.rg }}</td>
-              <td class="textCenter">{{ morador.telefone }}</td>
-              <td class="textCenter">{{ morador.celular }}</td>
+              <td class="textCenter" ><img *ngIf="morador.posicao == 1" class="img" src="assets/img/balls/verde.png">
+                                      <img *ngIf="morador.posicao != 1" class="img" src="assets/img/balls/vermelho.png"></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ formatId(morador.id, 6) }}</div></td>
+              <td><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.nome }}</div></td>
+              <td><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.email }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ formatCPF(morador.cpf) }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ morador.rg }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ formatTelefone(morador.telefone) }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="getIdMorador(morador.id)">{{ formatCelular(morador.celular) }}</div></td>
             </tr>
           </tbody>
         </table>
@@ -74,7 +77,7 @@
         <!--inclindo o controle de paginação.-->
       <div style="padding: 20px;">
         <div class="text-right">
-          <pagination-controls (pageChange)="pageChanged($event)"
+          <pagination-controls class="pointer" (pageChange)="pageChanged($event)"
               previousLabel="Anterior"
               nextLabel="Próximo"
           ></pagination-controls>

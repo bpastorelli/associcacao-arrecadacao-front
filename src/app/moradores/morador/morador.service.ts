@@ -1,6 +1,6 @@
 import { ErrorHandler } from './../../app.error-handler';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import { MEAT_API } from './../../app.api';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { _API } from './../../app.api';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Morador } from './../morador/morador.model';
@@ -14,19 +14,24 @@ export class MoradorService {
 
   constructor(private http: Http) { }
 
-  postMoradores(morador: Morador): Observable<string> {
+    postMoradores(morador: Morador): Observable<Morador> {
 
     const headers = new Headers()
     headers.append('Content-Type','application/json')
 
-    console.log("Dados:" + JSON.stringify(morador))
-
-    return this.http.post(`${MEAT_API}/associados/morador/incluir`
+    return this.http.post(`${_API}/associados/morador/incluir`
         , JSON.stringify(morador)
         , new RequestOptions({headers: headers}))
-        .map(response => response.json())
-        .map(morador => morador.id)
+        .map(this.extractData)
         .catch(ErrorHandler.handleError)
+
+  }
+
+  private extractData(res: Response) {
+
+      let body = res.json();
+      console.log("Body Data = "+body.data);
+      return body.data || [];
 
   }
 

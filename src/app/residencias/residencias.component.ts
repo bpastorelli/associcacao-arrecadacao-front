@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Residencia } from './residencia.model';
 import { ResidenciasService } from './residencias.service';
+import { Console } from '@angular/core/src/console';
 
 @Component({
   selector: 'mt-residencias',
@@ -14,23 +15,13 @@ export class ResidenciasComponent implements OnInit {
 
 
   pag : Number = 1 ;
-  contador : Number = 15;
+  contador : Number = 20;
 
   constructor(private residenciasService: ResidenciasService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
-    const codigo = this.route.snapshot.paramMap.get('codigo');
-    console.log(`Vai pesquisar: ${codigo}`);
-
-
-    if(codigo === "0" || codigo === null){
       this.getResidencias("0", null, null, "0");
-    }
-    else
-    {
-      this.getResidenciaById(codigo);
-    }
 
   }
 
@@ -70,14 +61,20 @@ export class ResidenciasComponent implements OnInit {
 
   }
 
-incluirMorador(codigo: string){
+  incluirMorador(codigo: string){
 
-  this.router.navigate([`morador/residencia/`, codigo])
+    this.router.navigate([`morador/residencia/`, codigo])
 
-}
+  }
 
   pageChanged(event){
     this.pag = event;
+  }
+
+  formatId (n, len) {
+    var num = parseInt(n, 10);
+    len = parseInt(len, 10);
+    return (isNaN(num) || isNaN(len)) ? n : ( 1e10 + "" + num ).slice(-len);
   }
 
 }

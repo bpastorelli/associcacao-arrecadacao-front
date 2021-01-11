@@ -30,14 +30,13 @@ import { ResidenciasComponent } from './residencias/residencias.component';
 import { MoradorComponent } from './moradores/morador/morador.component';
 import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
-import { MoradorSummaryComponent } from './morador-summary/morador-summary.component';
-import { MoradorEditSummaryComponent } from './morador-summary/morador-edit-summary.component';
-import { MoradoresGridComponent } from './moradores/moradores-grid/moradores-grid.component';
+import { MoradorSummaryComponent } from './summary/morador-summary.component';
+import { MoradorEditSummaryComponent } from './summary/morador-edit-summary.component';
 import { EmitterService } from './emitter.service';
 import { MoradorEditComponent } from './moradores/morador-edit/morador-edit.component';
 import { MoradorEditService } from './moradores/morador-edit/morador.edit.service';
 import { ResidenciaComponent } from './residencias/residencia/residencia.component';
-
+import { OrderByPipe } from './OrderByPipe';
 
 @NgModule({
   declarations: [
@@ -60,9 +59,9 @@ import { ResidenciaComponent } from './residencias/residencia/residencia.compone
     RadioComponent,
     MoradorSummaryComponent,
     MoradorEditSummaryComponent,
-    MoradoresGridComponent,
     MoradorEditComponent,
-    ResidenciaComponent
+    ResidenciaComponent,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

@@ -1,35 +1,60 @@
+import { Moradores } from './../../moradores/moradores.model';
 import { Residencia } from './../residencia.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ResidenciasService } from './../residencias.service';
 import { ResidenciaService } from './../../residencias/residencia/residencia.service';
 
 @Component({
   selector: 'mt-residencia',
-  templateUrl: './residencia.component.html'
+  templateUrl: './residencia.component.html',
 })
+
 export class ResidenciaComponent implements OnInit {
 
   public residenciaId: string
-  @Input() residencias: Residencia[]
+  public IsCreate: boolean = true
 
-  constructor(private router: Router, private route: ActivatedRoute, private residenciaService: ResidenciaService, private residenciasService: ResidenciasService) { }
+  public residencia: Residencia
+  public residencias: Residencia[]
+  public moradoresVinculados: Moradores[]
+
+  pag : Number = 1;
+  contador : Number = 5;
+
+  constructor(
+              private router: Router,
+              private route: ActivatedRoute,
+              private residenciaService: ResidenciaService,
+              private residenciasService: ResidenciasService) { }
 
   ngOnInit() {
 
     this.residenciaId = this.route.snapshot.paramMap.get('codigo');
-    this.getResidenciaById(this.residenciaId);
+
+    console.log(this.IsCreate)
+    console.log(`Residencia id ${this.residenciaId}`)
+
+    if(this.residenciaId != "create"){
+        this.IsCreate = false;
+        this.getResidenciaById(this.residenciaId);
+        this.getMoradoresVinculados(this.residenciaId);
+    }
 
   }
 
   postResidencia(residencia: Residencia){
 
+    console.log(residencia)
+
     this.residenciaService.postResidencia(residencia)
-      .subscribe((id: string) => {
-      console.log(`Residecia cadastrada: ${id}`);
-      this.router.navigate(['/residencia-summary']);
-    });
-    console.log(residencia);
+      .subscribe(data => {
+        this.residencia = data;
+        this.router.navigate(['/morador-summary']);
+      },err=>{
+          console.log(err);
+          alert(err);
+      });
 
   }
 
@@ -38,12 +63,13 @@ export class ResidenciaComponent implements OnInit {
     console.log(`Código de residecia ${id}`)
 
     this.residenciaService.putResidencia(residencia, id)
-      .subscribe((id: string) => {
-        this.router.navigate([`/morador-edit-summary`]);
-  }, err=>{
-    console.log(err);
-  });
-  console.log(residencia);
+      .subscribe(data => {
+        this.residencia = data;
+        this.router.navigate(['/morador-edit-summary']);
+      },err=>{
+          console.log(err);
+          alert(err);
+      });
 
   }
 
@@ -60,6 +86,32 @@ export class ResidenciaComponent implements OnInit {
     );
     return this.residencias;
 
+  }
+
+  getMoradoresVinculados(codigo: string){
+
+    this.residenciaService.getMoradoresVinculados(codigo)
+      .subscribe(
+          data=>{
+              console.log(data);
+              this.moradoresVinculados = data;
+          }, err=>{
+            console.log(err);
+          }
+      );
+      return this.moradoresVinculados;
+
+  }
+
+  getIdMorador(codigo: string){
+
+    console.log(`Código enviado: ${codigo}`)
+    this.router.navigate([`/morador-edit/`, codigo])
+
+  }
+
+  pageChanged(event){
+    this.pag = event;
   }
 
 }

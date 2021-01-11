@@ -24,13 +24,13 @@
               </mt-input-container>
             </div>
 
-            <div class="col-sm-3 col-xs-6">
+            <div class="col-sm-2 col-xs-6">
               <mt-input-container errorMessage="Campo obrigatório e somente números" label="CPF">
                 <input class="form-control" name="cpf" ngModel required maxlength="11" placeholder="CPF" pattern="^[0-9]*$" autocomplete="off">
               </mt-input-container>
             </div>
 
-            <div class="col-sm-3 col-xs-6">
+            <div class="col-sm-2 col-xs-6">
               <mt-input-container errorMessage="Campo obrigatório e somente números" label="RG">
                 <input class="form-control" name="rg" ngModel required maxlength="11" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
               </mt-input-container>
@@ -61,7 +61,7 @@
 
           <div class="col-sm-2 col-xs-6">
             <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código Residência">
-              <input class="form-control" type="hidden" name="residenciaId" [(ngModel)]="residenciaId" required minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
+              <input class="form-control" type="hidden" name="residenciaId" [(ngModel)]="residenciaId" minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
             </mt-input-container>
           </div>
 
@@ -69,13 +69,18 @@
         </div>
         </form>
 
-        <div class="row">
+        <div *ngIf="!create" class="row">
           <div class="col-xs-12">
-            <button (click)="postMoradores(form.value)" class="btn btn-success pull-right"
+            <button class="pointer" (click)="postMoradores(form.value)" class="btn btn-success pull-right"
             [disabled]="!form.valid"><i></i> Concluir Cadastro
             </button>
           </div>
         </div>
 
+        <div>
+          <li *ngFor="let item of morador" ></li>
+        </div>
+
     </section>
+
 </section>
