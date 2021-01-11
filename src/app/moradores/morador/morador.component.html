@@ -61,7 +61,7 @@
 
           <div class="col-sm-2 col-xs-6">
             <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código Residência">
-              <input class="form-control" type="hidden" name="residenciaId" [(ngModel)]="residenciaId" required minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
+              <input class="form-control" type="hidden" name="residenciaId" [(ngModel)]="residenciaId" minlength="1" pattern="^[0-9]*$" placeholder="Código Residência" autocomplete="off">
             </mt-input-container>
           </div>
 
@@ -69,12 +69,16 @@
         </div>
         </form>
 
-        <div class="row">
+        <div *ngIf="!create" class="row">
           <div class="col-xs-12">
             <button class="pointer" (click)="postMoradores(form.value)" class="btn btn-success pull-right"
             [disabled]="!form.valid"><i></i> Concluir Cadastro
             </button>
           </div>
+        </div>
+
+        <div>
+          <li *ngFor="let item of morador" ></li>
         </div>
 
     </section>

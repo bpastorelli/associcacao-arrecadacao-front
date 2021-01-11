@@ -27,16 +27,15 @@ export class MoradoresComponent implements OnInit {
 
   getMoradores(codigo: string, nome: string, cpf: string, rg: string, email: string){
 
-    this.moradoresService.getMoradores(codigo, nome, cpf, rg, email)
-    .subscribe(
-      data=>{
-        console.log(data);
-        this.moradores = data;
-      }, err=>{
-        console.log(err);
-      }
-    );
-    return this.moradores;
+    return this.moradoresService.getMoradores(codigo, nome, cpf, rg, email)
+      .subscribe(
+        data=>{
+          console.log(data);
+          this.moradores = data;
+        }, err=>{
+          console.log(err);
+        }
+      );
 
   }
 

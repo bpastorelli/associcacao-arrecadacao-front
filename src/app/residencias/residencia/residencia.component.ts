@@ -1,7 +1,7 @@
 import { Moradores } from './../../moradores/moradores.model';
 import { Residencia } from './../residencia.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ResidenciasService } from './../residencias.service';
 import { ResidenciaService } from './../../residencias/residencia/residencia.service';
 
@@ -14,8 +14,10 @@ export class ResidenciaComponent implements OnInit {
 
   public residenciaId: string
   public IsCreate: boolean = true
-  @Input() residencias: Residencia[]
-  @Input() moradoresVinculados: Moradores[]
+
+  public residencia: Residencia
+  public residencias: Residencia[]
+  public moradoresVinculados: Moradores[]
 
   pag : Number = 1;
   contador : Number = 5;
@@ -46,12 +48,13 @@ export class ResidenciaComponent implements OnInit {
     console.log(residencia)
 
     this.residenciaService.postResidencia(residencia)
-      .subscribe((id: string) => {
-      console.log(`Residecia cadastrada: ${id}`);
-      this.router.navigate(['/morador-summary']);
-    }, err=>{
-      console.log(err);
-    });
+      .subscribe(data => {
+        this.residencia = data;
+        this.router.navigate(['/morador-summary']);
+      },err=>{
+          console.log(err);
+          alert(err);
+      });
 
   }
 
@@ -60,12 +63,13 @@ export class ResidenciaComponent implements OnInit {
     console.log(`Código de residecia ${id}`)
 
     this.residenciaService.putResidencia(residencia, id)
-      .subscribe((id: string) => {
-        this.router.navigate([`/morador-edit-summary`]);
-  }, err=>{
-    console.log(err);
-  });
-  console.log(residencia);
+      .subscribe(data => {
+        this.residencia = data;
+        this.router.navigate(['/morador-edit-summary']);
+      },err=>{
+          console.log(err);
+          alert(err);
+      });
 
   }
 

@@ -1,1 +1,1 @@
-export const MEAT_API = 'http://localhost:8084'
+export const _API = 'http://localhost:8084'

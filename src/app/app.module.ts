@@ -32,7 +32,6 @@ import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
 import { MoradorSummaryComponent } from './summary/morador-summary.component';
 import { MoradorEditSummaryComponent } from './summary/morador-edit-summary.component';
-import { MoradoresGridComponent } from './moradores/moradores-grid/moradores-grid.component';
 import { EmitterService } from './emitter.service';
 import { MoradorEditComponent } from './moradores/morador-edit/morador-edit.component';
 import { MoradorEditService } from './moradores/morador-edit/morador.edit.service';
@@ -60,7 +59,6 @@ import { OrderByPipe } from './OrderByPipe';
     RadioComponent,
     MoradorSummaryComponent,
     MoradorEditSummaryComponent,
-    MoradoresGridComponent,
     MoradorEditComponent,
     ResidenciaComponent,
     OrderByPipe

@@ -19,6 +19,7 @@ export const ROUTES: Routes = [
   {path: 'morador-edit-summary', component: MoradorEditSummaryComponent },
   {path: 'morador-edit/:codigo', component: MoradorEditComponent },
   {path: 'morador/residencia/:codigo', component: MoradorComponent },
+  {path: 'morador/create', component: MoradorComponent },
   {path: 'residencias', component: ResidenciasComponent},
   {path: 'residencia/:codigo', component: ResidenciaComponent},
   {path: 'residencia/create', component: ResidenciaComponent},

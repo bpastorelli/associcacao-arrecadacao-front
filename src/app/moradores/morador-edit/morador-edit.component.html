@@ -51,13 +51,13 @@
 
           <div class="col-sm-2 col-xs-6">
             <div class="form-group">
-              <input type="text" class="form-control" name="telefone" [(ngModel)]="morador.telefone" #telefone placeholder="Telefone">
+              <input type="text" class="form-control" name="telefone" [(ngModel)]="morador.telefone" maxlength="11" #telefone placeholder="Telefone">
             </div>
           </div>
 
           <div class="col-sm-2 col-xs-6">
             <mt-input-container errorMessage="Campo obrigatório com mínimo!" label="Celular">
-              <input class="form-control" name="celular" [(ngModel)]="morador.celular" #celular required minlength="11" placeholder="Celular" autocomplete="off">
+              <input class="form-control" name="celular" [(ngModel)]="morador.celular" #celular required maxlength="11" placeholder="Celular" autocomplete="off">
             </mt-input-container>
         </div>
 
@@ -104,6 +104,7 @@
                 <th>CEP</th>
                 <th>Cidade</th>
                 <th>UF</th>
+                <th>Data Vínculo</th>
             </tr>
           </thead>
           <tbody>
@@ -115,6 +116,7 @@
               <td class="textCenter"><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.cep }}</div></td>
               <td><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.cidade }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.uf }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.dataVinculo }}</div></td>
             </tr>
           </tbody>
         </table>
