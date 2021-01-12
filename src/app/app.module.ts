@@ -38,6 +38,7 @@ import { MoradorEditService } from './moradores/morador-edit/morador.edit.servic
 import { ResidenciaComponent } from './residencias/residencia/residencia.component';
 import { OrderByPipe } from './OrderByPipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoradorEditService } from './morador.edit.service';
 import { MoradoresService } from './../moradores.service';
 import { Moradores } from './../../moradores/moradores.model';
+import { Morador } from './../morador/morador.model';
 
 @Component({
   selector: 'mt-morador-edit',
@@ -13,16 +14,21 @@ import { Moradores } from './../../moradores/moradores.model';
 
 export class MoradorEditComponent implements OnInit {
 
+    public id: string;
     public moradores: Moradores[];
     public residenciasVinculadas: Residencia[];
     public moradorEdit: MoradorEdit;
+    public morador: Morador;
     public message: string;
+    public errors: string[];
     public situacaoCadastral = [
                 { id: 1, label: "Ativo" },
                 { id: 0, label: "Inativo" }]
 
     pag : Number = 1;
     contador : Number = 5;
+
+    errorMessage;
 
     constructor(
         private router: Router,
@@ -39,19 +45,17 @@ export class MoradorEditComponent implements OnInit {
 
     }
 
-    putMorador(morador: MoradorEdit, id: string){
+    putMorador(moradorEdit: MoradorEdit, id: string){
 
-      console.log(morador)
-
-      this.moradorEditService.putMorador(morador, id)
-        .subscribe(
-            resp => {
-          this.message = resp;
+      this.moradorEditService.putMorador(moradorEdit, id)
+        .subscribe(data => {
+          this.morador = data;
+          this.id = data.id;
           this.router.navigate([`/morador-edit-summary`]);
       },
       (err) =>{
-          alert(err);
-
+          this.errorMessage = err.message;
+          throw err;
       });
 
     }

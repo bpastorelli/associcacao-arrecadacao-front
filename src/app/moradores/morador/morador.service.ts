@@ -1,3 +1,4 @@
+import { ExtractData } from './../../app.extract-data';
 import { ErrorHandler } from './../../app.error-handler';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { _API } from './../../app.api';
@@ -22,16 +23,8 @@ export class MoradorService {
     return this.http.post(`${_API}/associados/morador/incluir`
         , JSON.stringify(morador)
         , new RequestOptions({headers: headers}))
-        .map(this.extractData)
-        .catch(ErrorHandler.handleError)
-
-  }
-
-  private extractData(res: Response) {
-
-      let body = res.json();
-      console.log("Body Data = "+body.data);
-      return body.data || [];
+        .map(ExtractData.extract)
+        .catch(ErrorHandler.extracErrorMessage)
 
   }
 

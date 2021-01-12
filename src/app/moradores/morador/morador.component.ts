@@ -14,6 +14,8 @@ export class MoradorComponent implements OnInit {
   public morador: Morador
   public create: boolean = true
 
+  errorMessage;
+
   constructor(private moradorService: MoradorService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -38,8 +40,8 @@ export class MoradorComponent implements OnInit {
           alert(this.id);
           this.router.navigate(['/morador-summary']);
       },err=>{
-          console.log(err);
-          alert(err);
+        this.errorMessage = err.message;
+        throw err;
       });
   }
 

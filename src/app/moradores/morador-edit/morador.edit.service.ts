@@ -5,14 +5,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Residencia } from './../../residencias/residencia.model';
 import { ErrorHandler } from './../../app.error-handler';
-import 'rxjs/add/operator/catch';
+import { ExtractData } from './../../app.extract-data';
+import { Morador } from './../morador/morador.model';
 
 @Injectable()
 export class MoradorEditService {
 
   constructor(private http: Http){}
 
-  putMorador(morador: MoradorEdit, id: string) : Observable<string> {
+  putMorador(morador: MoradorEdit, id: string): Observable<Morador> {
 
     const headers = new Headers()
     headers.append('Content-Type','application/json')
@@ -20,14 +21,14 @@ export class MoradorEditService {
     return this.http.put(`${_API}/associados/morador/morador/${id}`
         , JSON.stringify(morador)
         , new RequestOptions({headers: headers}))
-        .map(this.extractData)
-        .catch(erro => Observable.throw(erro))
+        .map(ExtractData.extract)
+        .catch(ErrorHandler.extracErrorMessage)
   }
 
   getMorador(id: string) : Observable<MoradorEdit>{
 
     return this.http.get(`${_API}/associados/morador/id/${id}`)
-        .map(this.extractData)
+        .map(response => response.json())
         .catch( (e: any) => Observable.throw(e))
 
   }
@@ -38,12 +39,6 @@ export class MoradorEditService {
         .map(response => response.json())
         .catch(ErrorHandler.handleError)
 
-  }
-
-  private extractData(res: Response) {
-    let body = res.json();
-    console.log("Body Data = "+body.data);
-    return body.data || [];
   }
 
 }

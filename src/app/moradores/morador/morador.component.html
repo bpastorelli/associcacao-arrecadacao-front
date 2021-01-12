@@ -4,6 +4,10 @@
 <section class="content">
   <section class="invoice">
 
+      <div *ngIf="errorMessage" class="alert alert-warning">
+        <strong>Atenção! </strong>{{ errorMessage }}
+      </div>
+
         <form #form="ngForm" novalidate>
           <div class="row">
             <div class="col-xs-12">

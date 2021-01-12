@@ -4,6 +4,11 @@
 <section class="content">
   <section class="invoice" >
 
+
+      <div *ngIf="errorMessage" class="alert alert-warning">
+        <strong>Atenção! </strong>{{errorMessage }}
+      </div>
+
         <form #form="ngForm" novalidate *ngFor="let morador of moradores">
           <div class="row">
             <div class="col-xs-12">
@@ -35,7 +40,7 @@
 
             <div class="col-sm-2 col-xs-6">
               <mt-input-container errorMessage="Campo obrigatório!" label="RG">
-                <input class="form-control" name="rg" [(ngModel)]="morador.rg" #rg required minlength="5" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
+                <input class="form-control" name="rg" [(ngModel)]="morador.rg" #rg minlength="5" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
               </mt-input-container>
             </div>
 
@@ -85,7 +90,11 @@
             </button>
           </div>
         </div>
-        <p>{{ message }}</p>
+
+        <!--<section *ngFor="let erro of errors">
+          {{ erro }}
+        </section>-->
+
       </form>
 
     </section>
@@ -128,6 +137,7 @@
               nextLabel="Próximo"></pagination-controls>
           </div>
         </div>
+
     </section>
 
 
