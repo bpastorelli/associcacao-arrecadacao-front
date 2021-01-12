@@ -33,8 +33,6 @@ import { RadioComponent } from './shared/radio/radio.component';
 import { MoradorSummaryComponent } from './summary/morador-summary.component';
 import { MoradorEditSummaryComponent } from './summary/morador-edit-summary.component';
 import { EmitterService } from './emitter.service';
-import { MoradorEditComponent } from './moradores/morador-edit/morador-edit.component';
-import { MoradorEditService } from './moradores/morador-edit/morador.edit.service';
 import { ResidenciaComponent } from './residencias/residencia/residencia.component';
 import { OrderByPipe } from './OrderByPipe';
 
@@ -60,7 +58,6 @@ import { OrderByPipe } from './OrderByPipe';
     RadioComponent,
     MoradorSummaryComponent,
     MoradorEditSummaryComponent,
-    MoradorEditComponent,
     ResidenciaComponent,
     OrderByPipe
   ],
@@ -71,7 +68,7 @@ import { OrderByPipe } from './OrderByPipe';
     NgxPaginationModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [MoradorEditService,
+  providers: [
               EmitterService,
               MoradorService,
               MoradoresService,

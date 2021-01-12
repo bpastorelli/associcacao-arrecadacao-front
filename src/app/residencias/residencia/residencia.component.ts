@@ -12,8 +12,10 @@ import { ResidenciaService } from './../../residencias/residencia/residencia.ser
 
 export class ResidenciaComponent implements OnInit {
 
-  public residenciaId: string
-  public IsCreate: boolean = true
+  errorMessage;
+  create: boolean = true
+  codigo: string;
+  residenciaId: string
 
   public residencia: Residencia
   public residencias: Residencia[]
@@ -30,15 +32,15 @@ export class ResidenciaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.residenciaId = this.route.snapshot.paramMap.get('codigo');
+    this.codigo = this.route.snapshot.paramMap.get('codigo');
 
-    console.log(this.IsCreate)
-    console.log(`Residencia id ${this.residenciaId}`)
+    console.log(this.create)
+    console.log(`Residencia id ${this.codigo}`)
 
-    if(this.residenciaId != "create"){
-        this.IsCreate = false;
-        this.getResidenciaById(this.residenciaId);
-        this.getMoradoresVinculados(this.residenciaId);
+    if(this.codigo != "create"){
+        this.create = false;
+        this.getResidenciaById(this.codigo);
+        this.getMoradoresVinculados(this.codigo);
     }
 
   }
@@ -52,8 +54,8 @@ export class ResidenciaComponent implements OnInit {
         this.residencia = data;
         this.router.navigate(['/morador-summary']);
       },err=>{
-          console.log(err);
-          alert(err);
+        this.errorMessage = err.message;
+        throw err;
       });
 
   }
@@ -67,8 +69,8 @@ export class ResidenciaComponent implements OnInit {
         this.residencia = data;
         this.router.navigate(['/morador-edit-summary']);
       },err=>{
-          console.log(err);
-          alert(err);
+        this.errorMessage = err.message;
+        throw err;
       });
 
   }

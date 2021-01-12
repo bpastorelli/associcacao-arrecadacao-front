@@ -73,8 +73,7 @@ export class MoradorComponent implements OnInit {
       .subscribe(data => {
         this.morador = data;
         this.id = data.id;
-        alert(this.id);
-        this.router.navigate(['/morador-summary']);
+        this.router.navigate(['/residencia/create/morador/', this.id]);
     },err=>{
         this.errorMessage = err.message;
         throw err;

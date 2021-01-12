@@ -1,6 +1,6 @@
 <section class="content-header">
 
-    <section *ngIf="!IsCreate" class="content">
+    <section *ngIf="!create" class="content">
       <section class="invoice">
         <form #formEdit="ngForm" *ngFor="let residencia of residencias" novalidate>
           <div class="row">
@@ -136,9 +136,13 @@
     </section>
 </section>
 
-<section *ngIf="IsCreate" class="content">
+<section *ngIf="create" class="content">
+
 
   <section class="invoice">
+    <div *ngIf="errorMessage" class="alert alert-warning">
+      <strong>Atenção! </strong>{{ errorMessage }}
+    </div>
     <form #formCreate="ngForm" novalidate>
       <div class="row">
         <div class="col-xs-12">

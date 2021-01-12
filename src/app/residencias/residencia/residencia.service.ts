@@ -1,3 +1,4 @@
+import { ExtractData } from './../../app.extract-data';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorHandler } from './../../app.error-handler';
@@ -20,8 +21,8 @@ export class ResidenciaService {
     return this.http.post(`${_API}/associados/residencia`
         , JSON.stringify(residencia)
         , new RequestOptions({headers: headers}))
-        .map(this.extractData)
-        .catch(ErrorHandler.handleError)
+        .map(ExtractData.extract)
+        .catch(ErrorHandler.extracErrorMessage)
 
   }
 
@@ -35,8 +36,8 @@ export class ResidenciaService {
     return this.http.put(`${_API}/associados/residencia/${id}`
         , JSON.stringify(residencia)
         , new RequestOptions({headers: headers}))
-        .map(this.extractData)
-        .catch(ErrorHandler.handleError)
+        .map(ExtractData.extract)
+        .catch(ErrorHandler.extracErrorMessage)
 
   }
 
@@ -46,12 +47,6 @@ export class ResidenciaService {
         .map(response => response.json())
         .catch(ErrorHandler.handleError)
 
-  }
-
-  private extractData(res: Response) {
-    let body = res.json();
-    console.log("Body Data = "+body.data);
-    return body.data || [];
   }
 
 }
