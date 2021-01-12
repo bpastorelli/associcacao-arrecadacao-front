@@ -1,15 +1,13 @@
-<section class="content-header">
-</section>
-
 <section class="content">
+
+
   <section class="invoice" >
 
-
       <div *ngIf="errorMessage" class="alert alert-warning">
-        <strong>Atenção! </strong>{{errorMessage }}
+        <strong>Atenção! </strong>{{ errorMessage }}
       </div>
 
-        <form #form="ngForm" novalidate *ngFor="let morador of moradores">
+        <form #formEdit="ngForm" novalidate *ngFor="let morador of moradores">
           <div class="row">
             <div class="col-xs-12">
               <h2 class="page-header">
@@ -85,19 +83,13 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <button (click)="putMorador(form.value, id.value)" class="btn btn-success pull-right"
-            [disabled]="!form.valid"><i></i> Atualizar Cadastro
+            <button (click)="putMorador(formEdit.value, id.value)" class="btn btn-success pull-right"
+            [disabled]="!formEdit.valid"><i></i> Atualizar Cadastro
             </button>
           </div>
         </div>
 
-        <!--<section *ngFor="let erro of errors">
-          {{ erro }}
-        </section>-->
-
       </form>
-
-    </section>
 
       <div class="col-xs-12">
         <p class="control-label"><b>Residências vinculadas:</b></p>
@@ -117,7 +109,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let residencia of residenciasVinculadas | paginate: { itemsPerPage: contador, currentPage: pag }">
+            <tr *ngFor="let residencia of residenciaVinculadas | paginate: { itemsPerPage: contador, currentPage: pag }">
               <td><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.endereco }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.numero }}</div></td>
               <td><div class="pointer" (click)="editResidencia(residencia.id)">{{ residencia.complemento }}</div></td>
@@ -134,11 +126,10 @@
           <div class="text-right">
             <pagination-controls class="pointer" (pageChange)="pageChanged($event)"
               previousLabel="Anterior"
-              nextLabel="Próximo"></pagination-controls>
+              nextLabel="Próximo">
+            </pagination-controls>
           </div>
         </div>
-
-    </section>
-
+  </section>
 
 </section>

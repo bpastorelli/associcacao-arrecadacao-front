@@ -106,7 +106,7 @@ export class ResidenciaComponent implements OnInit {
   getIdMorador(codigo: string){
 
     console.log(`Código enviado: ${codigo}`)
-    this.router.navigate([`/morador-edit/`, codigo])
+    this.router.navigate([`/morador/`, codigo])
 
   }
 

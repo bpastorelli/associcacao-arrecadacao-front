@@ -16,7 +16,7 @@ export class MoradorEditComponent implements OnInit {
 
     public id: string;
     public moradores: Moradores[];
-    public residenciasVinculadas: Residencia[];
+    public residenciaVinculadas: Residencia[];
     public moradorEdit: MoradorEdit;
     public morador: Morador;
     public message: string;
@@ -80,12 +80,12 @@ export class MoradorEditComponent implements OnInit {
         .subscribe(
             data=>{
                 console.log(data);
-                this.residenciasVinculadas = data;
+                this.residenciaVinculadas = data;
             }, err=>{
               console.log(err);
             }
         );
-        return this.residenciasVinculadas;
+        return this.residenciaVinculadas;
 
     }
 
