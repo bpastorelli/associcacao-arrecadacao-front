@@ -45,9 +45,9 @@ export class ResidenciaComponent implements OnInit {
     this.acao = this.route.snapshot.paramMap.get('acao');
     this.codigo = this.route.snapshot.paramMap.get('codigo');
 
-    console.log(this.acao);
-    console.log(this.create)
-    console.log(`Residencia id ${this.codigo}`)
+    console.log(`acao=${this.acao}`);
+    console.log(`create=${this.create}`)
+    console.log(`codigo=${this.codigo}`)
 
     if(this.codigo != "create" && this.codigo != "novo"  && this.acao === null){
         this.create = false;

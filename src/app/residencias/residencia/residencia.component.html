@@ -230,7 +230,7 @@
         <!-- /.row -->
         </div>
 
-        <div *ngIf="acao==='create'" class="row">
+        <div *ngIf="acao===null" class="row">
           <div class="col-xs-12">
             <button (click)="postResidencia(formCreate.value)" class="btn btn-success pull-right"
             [disabled]="!formCreate.valid"><i></i> Concluir Cadastro
@@ -238,7 +238,7 @@
           </div>
         </div>
 
-        <div *ngIf="acao != 'create'" class="row">
+        <div *ngIf="acao === 'novo'"  class="row">
           <div class="col-xs-12">
             <button (click)="postNovaResidencia(formCreate.value)" class="btn btn-success pull-right"
             [disabled]="!formCreate.valid"><i></i> Finalizar

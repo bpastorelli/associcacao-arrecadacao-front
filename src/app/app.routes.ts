@@ -23,6 +23,7 @@ export const ROUTES: Routes = [
   {path: 'residencia/:codigo', component: ResidenciaComponent},
   {path: 'residencia/:codigo', component: ResidenciaComponent},
   {path: 'residencia/:acao/morador/:codigo', component: ResidenciaComponent},
+  {path: 'residencia/:acao', component: ResidenciaComponent},
   {path: 'about', component: AboutComponent},
   {path: 'order', component: OrderComponent}
 
