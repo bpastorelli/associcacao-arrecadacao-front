@@ -13,7 +13,6 @@ export class ResidenciasComponent implements OnInit {
 
   public residencias: Residencia[]
 
-
   pag : Number = 1 ;
   contador : Number = 20;
 
@@ -55,15 +54,15 @@ export class ResidenciasComponent implements OnInit {
 
   }
 
-  editResidencia(codigo: string){
+  incluirMorador(codigo: string){
 
-    this.router.navigate([`/residencia/`, codigo])
+    this.router.navigate([`morador/create/residencia/`, codigo])
 
   }
 
-  incluirMorador(codigo: string){
+  editResidencia(codigo: string){
 
-    this.router.navigate([`morador/residencia/`, codigo])
+    this.router.navigate([`/residencia/`, codigo])
 
   }
 

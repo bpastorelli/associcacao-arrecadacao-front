@@ -12,8 +12,11 @@ import { ResidenciaService } from './../../residencias/residencia/residencia.ser
 
 export class ResidenciaComponent implements OnInit {
 
-  public residenciaId: string
-  public IsCreate: boolean = true
+  errorMessage;
+  create: boolean = true;
+  acao: string;
+  codigo: string;
+  residenciaId: string
 
   public residencia: Residencia
   public residencias: Residencia[]
@@ -30,30 +33,45 @@ export class ResidenciaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.residenciaId = this.route.snapshot.paramMap.get('codigo');
+    this.acao = this.route.snapshot.paramMap.get('acao');
+    this.codigo = this.route.snapshot.paramMap.get('codigo');
 
-    console.log(this.IsCreate)
-    console.log(`Residencia id ${this.residenciaId}`)
+    console.log(this.acao);
+    console.log(this.create)
+    console.log(`Residencia id ${this.codigo}`)
 
-    if(this.residenciaId != "create"){
-        this.IsCreate = false;
-        this.getResidenciaById(this.residenciaId);
-        this.getMoradoresVinculados(this.residenciaId);
+    if(this.codigo != "create" && this.codigo != "novo"  && this.acao === null){
+        this.create = false;
+        this.getResidenciaById(this.codigo);
+        this.getMoradoresVinculados(this.codigo);
     }
 
   }
 
   postResidencia(residencia: Residencia){
 
-    console.log(residencia)
-
     this.residenciaService.postResidencia(residencia)
       .subscribe(data => {
         this.residencia = data;
         this.router.navigate(['/morador-summary']);
       },err=>{
-          console.log(err);
-          alert(err);
+        this.errorMessage = err.message;
+        throw err;
+      });
+
+  }
+
+  postNovaResidencia(residencia: Residencia){
+
+    console.log(residencia);
+
+    this.residenciaService.postNovaResidencia(residencia)
+      .subscribe(data => {
+        this.residencia = data;
+        this.router.navigate(['/morador-summary']);
+      },err=>{
+        this.errorMessage = err.message;
+        throw err;
       });
 
   }
@@ -67,8 +85,8 @@ export class ResidenciaComponent implements OnInit {
         this.residencia = data;
         this.router.navigate(['/morador-edit-summary']);
       },err=>{
-          console.log(err);
-          alert(err);
+        this.errorMessage = err.message;
+        throw err;
       });
 
   }
@@ -106,7 +124,7 @@ export class ResidenciaComponent implements OnInit {
   getIdMorador(codigo: string){
 
     console.log(`Código enviado: ${codigo}`)
-    this.router.navigate([`/morador-edit/`, codigo])
+    this.router.navigate([`/morador/`, codigo])
 
   }
 

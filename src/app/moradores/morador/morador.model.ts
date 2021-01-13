@@ -1,18 +1,15 @@
-class Morador{
+export interface Morador {
 
-    constructor(
-        public id: string,
-        public nome: string,
-        public cpf: string,
-        public rg: string,
-        public email: string,
-        public senha: string,
-        public perfil: string,
-        public telefone: string,
-        public celular: string,
-        public residenciaId: string
-    ){}
+  id: string,
+  nome: string,
+  cpf: string,
+  rg: string,
+  email: string,
+  senha: string,
+  perfil: string,
+  telefone: string,
+  celular: string,
+  residenciaId: string,
+  posicao: number
 
 }
-
-export {Morador}
