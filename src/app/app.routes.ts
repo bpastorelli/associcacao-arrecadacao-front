@@ -22,7 +22,7 @@ export const ROUTES: Routes = [
   {path: 'residencias', component: ResidenciasComponent},
   {path: 'residencia/:codigo', component: ResidenciaComponent},
   {path: 'residencia/:codigo', component: ResidenciaComponent},
-  {path: 'residencia/create/morador/:codigo', component: ResidenciaComponent},
+  {path: 'residencia/:acao/morador/:codigo', component: ResidenciaComponent},
   {path: 'about', component: AboutComponent},
   {path: 'order', component: OrderComponent}
 

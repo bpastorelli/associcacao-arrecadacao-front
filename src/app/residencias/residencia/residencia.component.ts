@@ -13,7 +13,8 @@ import { ResidenciaService } from './../../residencias/residencia/residencia.ser
 export class ResidenciaComponent implements OnInit {
 
   errorMessage;
-  create: boolean = true
+  create: boolean = true;
+  acao: string;
   codigo: string;
   residenciaId: string
 
@@ -32,12 +33,14 @@ export class ResidenciaComponent implements OnInit {
 
   ngOnInit() {
 
+    this.acao = this.route.snapshot.paramMap.get('acao');
     this.codigo = this.route.snapshot.paramMap.get('codigo');
 
+    console.log(this.acao);
     console.log(this.create)
     console.log(`Residencia id ${this.codigo}`)
 
-    if(this.codigo != "create"){
+    if(this.codigo != "create" && this.codigo != "novo"  && this.acao === null){
         this.create = false;
         this.getResidenciaById(this.codigo);
         this.getMoradoresVinculados(this.codigo);
@@ -47,9 +50,22 @@ export class ResidenciaComponent implements OnInit {
 
   postResidencia(residencia: Residencia){
 
-    console.log(residencia)
-
     this.residenciaService.postResidencia(residencia)
+      .subscribe(data => {
+        this.residencia = data;
+        this.router.navigate(['/morador-summary']);
+      },err=>{
+        this.errorMessage = err.message;
+        throw err;
+      });
+
+  }
+
+  postNovaResidencia(residencia: Residencia){
+
+    console.log(residencia);
+
+    this.residenciaService.postNovaResidencia(residencia)
       .subscribe(data => {
         this.residencia = data;
         this.router.navigate(['/morador-summary']);

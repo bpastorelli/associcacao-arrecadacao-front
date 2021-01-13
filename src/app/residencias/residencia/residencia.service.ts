@@ -26,6 +26,19 @@ export class ResidenciaService {
 
   }
 
+  postNovaResidencia(residencia: Residencia): Observable<Residencia>{
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+
+    return this.http.post(`${_API}/associados/residencia/nova`
+        ,JSON.stringify(residencia)
+        ,new RequestOptions({headers: headers}))
+        .map(ExtractData.extract)
+        .catch(ErrorHandler.extracErrorMessage)
+
+  }
+
   putResidencia(residencia: Residencia, id: string): Observable<Residencia>{
 
     const headers = new Headers()

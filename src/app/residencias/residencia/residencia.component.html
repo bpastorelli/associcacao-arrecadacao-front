@@ -1,6 +1,9 @@
 <section class="content-header">
 
     <section *ngIf="!create" class="content">
+      <div *ngIf="errorMessage" class="alert alert-warning">
+        <strong>Atenção! </strong>{{ errorMessage }}
+      </div>
       <section class="invoice">
         <form #formEdit="ngForm" *ngFor="let residencia of residencias" novalidate>
           <div class="row">
@@ -218,13 +221,27 @@
           </mt-input-container>
         </div>
 
+        <div *ngIf="acao==='novo'" class="col-sm-2 col-xs-6">
+          <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código Morador">
+            <input class="form-control" type="hidden" name="moradorId" [(ngModel)]="codigo" minlength="1" placeholder="Código Morador" autocomplete="off">
+          </mt-input-container>
+        </div>
+
         <!-- /.row -->
         </div>
 
-        <div class="row">
+        <div *ngIf="acao==='create'" class="row">
           <div class="col-xs-12">
             <button (click)="postResidencia(formCreate.value)" class="btn btn-success pull-right"
             [disabled]="!formCreate.valid"><i></i> Concluir Cadastro
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="acao != 'create'" class="row">
+          <div class="col-xs-12">
+            <button (click)="postNovaResidencia(formCreate.value)" class="btn btn-success pull-right"
+            [disabled]="!formCreate.valid"><i></i> Finalizar
             </button>
           </div>
         </div>

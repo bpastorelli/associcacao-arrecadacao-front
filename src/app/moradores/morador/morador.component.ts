@@ -36,11 +36,8 @@ export class MoradorComponent implements OnInit {
 
   ngOnInit() {
 
-      this.codigo = this.route.snapshot.paramMap.get('codigo');
       this.acao = this.route.snapshot.paramMap.get('acao');
-
-      console.log(this.codigo)
-      console.log(this.acao)
+      this.codigo = this.route.snapshot.paramMap.get('codigo');
 
       if(this.codigo != "create" && this.codigo != "novo"  && this.acao === null){
           this.create = false;
@@ -73,7 +70,7 @@ export class MoradorComponent implements OnInit {
       .subscribe(data => {
         this.morador = data;
         this.id = data.id;
-        this.router.navigate(['/residencia/create/morador/', this.id]);
+        this.router.navigate(['/residencia/novo/morador/', this.id]);
     },err=>{
         this.errorMessage = err.message;
         throw err;
