@@ -22,10 +22,4 @@ export class MoradoresService {
 
   }
 
-  private extractData(res: Response) {
-    let body = res.json();
-    console.log("Body Data = "+body.data);
-    return body.data || [];
-  }
-
 }

@@ -31,13 +31,13 @@
 
             <div class="col-sm-2 col-xs-6">
               <mt-input-container errorMessage="Campo obrigatório com mínimo 5 caracteres" label="e-mail">
-                <input class="form-control" #cep name="cep" [(ngModel)]="residencia.cep" required minlength="8" placeholder="CEP" autocomplete="off">
+                <input class="form-control" #cep (blur)="getCep(residencia.cep)" name="cep" [(ngModel)]="residencia.cep" required minlength="8" placeholder="CEP" autocomplete="off">
               </mt-input-container>
             </div>
 
             <div class="col-sm-6 col-xs-6">
               <mt-input-container errorMessage="Campo obrigatório!" label="Endereço">
-                <input class="form-control" #endereco type="text" name="endereco" [(ngModel)]="residencia.endereco" required maxlength="100" placeholder="Endereço" autocomplete="off">
+                <input class="form-control" #endereco type="text" name="endereco" [(ngModel)]="logradouroResp" required maxlength="100" placeholder="Endereço" autocomplete="off">
               </mt-input-container>
             </div>
 
@@ -56,29 +56,29 @@
               </mt-input-container>
             </div>
 
-            <div class="col-xs-12">
-              <p class="control-label"> Bairro:</p>
-            </div>
-            <div class="col-sm-4 col-xs-6">
-              <mt-input-container errorMessage="Campo obrigatório!" label="Bairro">
-                <input class="form-control" #bairro name="bairro" [(ngModel)]="residencia.bairro" required maxlength="50" placeholder="Bairro" autocomplete="off">
-              </mt-input-container>
-            </div>
+              <div class="col-xs-12">
+                <p class="control-label"> Bairro:</p>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <mt-input-container errorMessage="Campo obrigatório!" label="Bairro">
+                  <input class="form-control" #bairro name="bairro" [(ngModel)]="bairroResp" required maxlength="50" placeholder="Bairro" autocomplete="off">
+                </mt-input-container>
+              </div>
 
-            <div class="col-xs-12">
-              <p class="control-label">Cidade:</p>
-            </div>
-            <div class="col-sm-4 col-xs-6">
-              <mt-input-container errorMessage="Campo obrigatório com mínimo 5 caracteres" label="Cidade">
-                <input class="form-control" #cidade name="cidade" [(ngModel)]="residencia.cidade" required maxlength="50" placeholder="Cidade" autocomplete="off">
-              </mt-input-container>
-            </div>
+              <div class="col-xs-12">
+                <p class="control-label">Cidade:</p>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <mt-input-container errorMessage="Campo obrigatório com mínimo 5 caracteres" label="Cidade">
+                  <input class="form-control" #cidade name="cidade" [(ngModel)]="localidadeResp" required maxlength="50" placeholder="Cidade" autocomplete="off">
+                </mt-input-container>
+              </div>
 
-            <div class="col-sm-1 col-xs-6">
-              <mt-input-container errorMessage="Campo obrigatório!" label="UF">
-                <input class="form-control" #uf name="uf" [(ngModel)]="residencia.uf" required minlength="2" placeholder="UF" autocomplete="off">
-              </mt-input-container>
-            </div>
+              <div class="col-sm-1 col-xs-6">
+                <mt-input-container errorMessage="Campo obrigatório!" label="UF">
+                  <input class="form-control" #uf name="uf" [(ngModel)]="ufResp" required minlength="2" placeholder="UF" autocomplete="off">
+                </mt-input-container>
+              </div>
 
             <div class="col-sm-1 col-xs-6">
               <mt-input-container errorMessage="Campo obrigatório e somente números" label="Código Residência">
@@ -172,13 +172,13 @@
 
         <div class="col-sm-2 col-xs-6">
           <mt-input-container errorMessage="Campo obrigatório com mínimo 5 caracteres" label="e-mail">
-            <input class="form-control" #cep name="cep" ngModel type="text" required minlength="8" placeholder="CEP" autocomplete="off">
+            <input class="form-control" #cep name="cep" (blur)="getCep(cep.value)" ngModel type="text" required minlength="8" placeholder="CEP" autocomplete="off">
           </mt-input-container>
         </div>
 
         <div class="col-sm-6 col-xs-6">
           <mt-input-container errorMessage="Campo obrigatório!" label="Endereço">
-            <input class="form-control" #endereco ngModel type="text" name="endereco" required maxlength="100" placeholder="Endereço" autocomplete="off">
+            <input class="form-control" #endereco ngModel type="text" name="endereco" [(ngModel)]="logradouroResp" required maxlength="100" placeholder="Endereço" autocomplete="off">
           </mt-input-container>
         </div>
 
@@ -202,7 +202,7 @@
         </div>
         <div class="col-sm-4 col-xs-6">
           <mt-input-container errorMessage="Campo obrigatório!" label="Bairro">
-            <input class="form-control" #bairro ngModel type="text" name="bairro" required maxlength="50" placeholder="Bairro" autocomplete="off">
+            <input class="form-control" #bairro ngModel type="text" name="bairro" [(ngModel)]="bairroResp" required maxlength="50" placeholder="Bairro" autocomplete="off">
           </mt-input-container>
         </div>
 
@@ -211,13 +211,13 @@
         </div>
         <div class="col-sm-4 col-xs-6">
           <mt-input-container errorMessage="Campo obrigatório com mínimo 5 caracteres" label="Cidade">
-            <input class="form-control" #cidade ngModel type="text" name="cidade" required maxlength="50" placeholder="Cidade" autocomplete="off">
+            <input class="form-control" #cidade ngModel type="text" name="cidade" [(ngModel)]="localidadeResp" required maxlength="50" placeholder="Cidade" autocomplete="off">
           </mt-input-container>
         </div>
 
         <div class="col-sm-1 col-xs-6">
           <mt-input-container errorMessage="Campo obrigatório!" label="UF">
-            <input class="form-control" #uf name="uf" ngModel type="text" required minlength="2" placeholder="UF" autocomplete="off">
+            <input class="form-control" #uf name="uf" ngModel type="text" [(ngModel)]="ufResp" required minlength="2" placeholder="UF" autocomplete="off">
           </mt-input-container>
         </div>
 
@@ -230,7 +230,7 @@
         <!-- /.row -->
         </div>
 
-        <div *ngIf="acao==='create'" class="row">
+        <div *ngIf="acao===null" class="row">
           <div class="col-xs-12">
             <button (click)="postResidencia(formCreate.value)" class="btn btn-success pull-right"
             [disabled]="!formCreate.valid"><i></i> Concluir Cadastro
@@ -238,13 +238,14 @@
           </div>
         </div>
 
-        <div *ngIf="acao != 'create'" class="row">
+        <div *ngIf="acao === 'novo'"  class="row">
           <div class="col-xs-12">
             <button (click)="postNovaResidencia(formCreate.value)" class="btn btn-success pull-right"
             [disabled]="!formCreate.valid"><i></i> Finalizar
             </button>
           </div>
         </div>
+
     </form>
   </section>
 </section>

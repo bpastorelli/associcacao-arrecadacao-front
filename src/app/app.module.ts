@@ -23,6 +23,7 @@ import { OrderComponent } from './order/order.component';
 import { MoradoresComponent } from './moradores/moradores.component';
 import { MoradoresService } from './moradores/moradores.service';
 import { MoradorService } from './moradores/morador/morador.service';
+import { CepService } from './cep/cep.service';
 import { ResidenciasService } from './residencias/residencias.service';
 import { ResidenciaService } from './residencias/residencia/residencia.service';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -35,6 +36,7 @@ import { MoradorEditSummaryComponent } from './summary/morador-edit-summary.comp
 import { EmitterService } from './emitter.service';
 import { ResidenciaComponent } from './residencias/residencia/residencia.component';
 import { OrderByPipe } from './OrderByPipe';
+import { CepComponent } from './cep/cep.component';
 
 
 @NgModule({
@@ -59,7 +61,8 @@ import { OrderByPipe } from './OrderByPipe';
     MoradorSummaryComponent,
     MoradorEditSummaryComponent,
     ResidenciaComponent,
-    OrderByPipe
+    OrderByPipe,
+    CepComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { OrderByPipe } from './OrderByPipe';
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
+              CepService,
               EmitterService,
               MoradorService,
               MoradoresService,
