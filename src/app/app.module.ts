@@ -38,6 +38,7 @@ import { EmitterService } from './emitter.service';
 import { ResidenciaComponent } from './residencias/residencia/residencia.component';
 import { CepComponent } from './cep/cep.component';
 import { VisitantesComponent } from './visitantes/visitantes.component';
+import { VisitanteComponent } from './visitantes/visitante/visitante.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { VisitantesComponent } from './visitantes/visitantes.component';
     MoradorEditSummaryComponent,
     ResidenciaComponent,
     CepComponent,
-    VisitantesComponent
+    VisitantesComponent,
+    VisitanteComponent
   ],
   imports: [
     BrowserModule,

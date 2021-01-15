@@ -5,7 +5,6 @@ import { Moradores } from './../../moradores/moradores.model';
 import { Residencia } from './../../residencias/residencia.model';
 import { MoradoresService } from './../moradores.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'mt-morador',
