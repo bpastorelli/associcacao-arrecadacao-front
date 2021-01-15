@@ -7,6 +7,7 @@ import { MoradorComponent } from './moradores/morador/morador.component';
 import { MoradorSummaryComponent } from './summary/morador-summary.component';
 import { ResidenciaComponent } from './residencias/residencia/residencia.component';
 import { ResidenciasComponent } from './residencias/residencias.component'
+import { VisitantesComponent } from './visitantes/visitantes.component';
 import { OrderComponent } from './order/order.component';
 import { MoradorEditSummaryComponent } from './summary/morador-edit-summary.component';
 
@@ -25,6 +26,7 @@ export const ROUTES: Routes = [
   {path: 'residencia/:acao/morador/:codigo', component: ResidenciaComponent},
   {path: 'residencia/:acao', component: ResidenciaComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'order', component: OrderComponent}
+  {path: 'order', component: OrderComponent},
+  {path: 'visitantes', component: VisitantesComponent}
 
 ]

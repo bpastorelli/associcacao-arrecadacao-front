@@ -23,6 +23,7 @@ import { OrderComponent } from './order/order.component';
 import { MoradoresComponent } from './moradores/moradores.component';
 import { MoradoresService } from './moradores/moradores.service';
 import { MoradorService } from './moradores/morador/morador.service';
+import { VisitantesService } from './visitantes/visitantes.service';
 import { CepService } from './cep/cep.service';
 import { ResidenciasService } from './residencias/residencias.service';
 import { ResidenciaService } from './residencias/residencia/residencia.service';
@@ -35,8 +36,8 @@ import { MoradorSummaryComponent } from './summary/morador-summary.component';
 import { MoradorEditSummaryComponent } from './summary/morador-edit-summary.component';
 import { EmitterService } from './emitter.service';
 import { ResidenciaComponent } from './residencias/residencia/residencia.component';
-import { OrderByPipe } from './OrderByPipe';
 import { CepComponent } from './cep/cep.component';
+import { VisitantesComponent } from './visitantes/visitantes.component';
 
 
 @NgModule({
@@ -61,8 +62,8 @@ import { CepComponent } from './cep/cep.component';
     MoradorSummaryComponent,
     MoradorEditSummaryComponent,
     ResidenciaComponent,
-    OrderByPipe,
-    CepComponent
+    CepComponent,
+    VisitantesComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +81,7 @@ import { CepComponent } from './cep/cep.component';
               RestaurantsService,
               ShoppingCartService,
               ResidenciaService,
+              VisitantesService,
             {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
