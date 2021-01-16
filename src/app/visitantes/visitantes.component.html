@@ -44,6 +44,10 @@
                 <th>Nome</th>
                 <th>CPF</th>
                 <th>RG</th>
+                <th>Endereço</th>
+                <th>Número</th>
+                <th>Cidade</th>
+                <th>UF</th>
                 <th>Telefone</th>
                 <th>Celular</th>
                 <th>Última Visita</th>
@@ -55,6 +59,10 @@
               <td ><div class="pointer" (click)="editVisitante(visitante.id)">{{ visitante.nome }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="editVisitante(visitante.id)">{{ formatCPF(visitante.cpf) }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="editVisitante(visitante.id)">{{ visitante.rg }}</div></td>
+              <td ><div class="pointer" (click)="editVisitante(visitante.id)">{{ visitante.endereco }}</div></td>
+              <td class="textCenter"><div class="pointer" (click)="editVisitante(visitante.id)">{{ formatTelefone(visitante.numero) }}</div></td>
+              <td ><div class="pointer" (click)="editVisitante(visitante.id)">{{ formatTelefone(visitante.cidade) }}</div></td>
+              <td class="textCenter" ><div class="pointer" (click)="editVisitante(visitante.id)">{{ visitante.uf }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="editVisitante(visitante.id)">{{ formatTelefone(visitante.telefone) }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="editVisitante(visitante.id)">{{ formatCelular(visitante.celular) }}</div></td>
               <td><div class="pointer"></div></td>

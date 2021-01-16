@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Cep } from './../../cep/cep.model';
 import { Visitante } from '../visitante.model';
 import { VisitantesService } from './../visitantes.service';
+import { CepService } from './../../cep/cep.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -17,6 +19,12 @@ export class VisitanteComponent implements OnInit {
   contador: Number = 5;
   errorMessage;
 
+  logradouroResp: string;
+  bairroResp: string;
+  localidadeResp: string;
+  ufResp: string;
+
+  public cepResponse: Cep;
   public visitante: Visitante;
   public visitantes: Visitante[];
   public situacaoCadastral = [
@@ -27,19 +35,16 @@ export class VisitanteComponent implements OnInit {
   constructor(
               private router: Router,
               private route: ActivatedRoute,
+              private cepService: CepService,
               private visitantesService: VisitantesService) { }
-
   ngOnInit() {
 
       this.codigo = this.route.snapshot.paramMap.get('codigo');
-
-      console.log(this.codigo)
 
       if(this.codigo != "create" && this.codigo != "novo"){
           this.create = false;
           this.getVisitanteById(this.codigo);
       }
-
       console.log(this.create)
 
   }
@@ -59,9 +64,16 @@ export class VisitanteComponent implements OnInit {
 
   }
 
-  putVisitante(visitate: Visitante, id: string){
+  putVisitante(visitante: Visitante, id: string){
 
-
+    this.visitantesService.putVisitante(visitante, id)
+      .subscribe(data => {
+        this.visitante = data;
+        this.router.navigate(['/morador-edit-summary']);
+    },err=>{
+        this.errorMessage = err.message;
+        throw err;
+    });
 
   }
 
@@ -71,6 +83,9 @@ export class VisitanteComponent implements OnInit {
       .subscribe(
         data=>{
             this.visitantes = data;
+            this.visitantes.forEach(v => {
+                this.getCep(v.cep)
+            });
         }, err=>{
            this.errorMessage = err.message;
            throw err;
@@ -78,6 +93,24 @@ export class VisitanteComponent implements OnInit {
     );
     return this.visitantes;
 
+  }
+
+  getCep(cep: string){
+
+    if(cep.length > 0){
+      this.cepService.getCep(cep)
+        .subscribe(
+          data=>{
+            this.cepResponse = data;
+            this.logradouroResp = data.logradouro;
+            this.bairroResp = data.bairro;
+            this.localidadeResp = data.localidade;
+            this.ufResp = data.uf;
+        },err =>{
+            this.errorMessage = err.message;
+            throw err;
+        });
+    }
   }
 
   pageChanged(event){

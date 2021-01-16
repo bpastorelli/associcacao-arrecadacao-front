@@ -32,4 +32,19 @@ export class VisitantesService {
 
   }
 
+  putVisitante(visitante: Visitante, id: string): Observable<Visitante>{
+
+    const headers = new Headers()
+    headers.append('Content-Type','application/json')
+
+    console.log(visitante)
+
+    return this.http.put(`${_API}/associados/visitante/${id}`
+        , JSON.stringify(visitante)
+        , new RequestOptions({headers: headers}))
+        .map(ExtractData.extract)
+        .catch(ErrorHandler.extracErrorMessage)
+
+  }
+
 }

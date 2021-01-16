@@ -43,48 +43,60 @@ export class VisitantesComponent implements OnInit {
 
   formatCPF(cpf: string){
 
-    var p1 = cpf.substring(0,3)
-    var p2 = cpf.substring(6,3)
-    var p3 = cpf.substring(9,6)
-    var p4 = cpf.substring(11,9)
+    if(cpf != ""){
 
-    return p1+"."+p2+"."+p3+"-"+p4
+      var p1 = cpf.substring(0,3)
+      var p2 = cpf.substring(6,3)
+      var p3 = cpf.substring(9,6)
+      var p4 = cpf.substring(11,9)
+
+      return p1+"."+p2+"."+p3+"-"+p4
+
+    }
 
   }
 
   formatTelefone(telefone: string){
 
-    if(telefone.length === 10){
+    if(telefone != null){
 
-      var p1 = telefone.substring(0,2);
-      var p2 = telefone.substring(2,6);
-      var p3 = telefone.substring(6,11);
+      if(telefone.length === 10){
 
-      return `(${p1}) ${p2}-${p3}`;
-    }else{
-      return telefone;
+        var p1 = telefone.substring(0,2);
+        var p2 = telefone.substring(2,6);
+        var p3 = telefone.substring(6,11);
+
+        return `(${p1}) ${p2}-${p3}`;
+      }else{
+        return telefone;
+      }
+
     }
 
   }
 
   formatCelular(celular: string){
 
-    if(celular.length === 11){
+    if(celular != null){
 
-      var p1 = celular.substring(0,2);
-      var p2 = celular.substring(2,7);
-      var p3 = celular.substring(7,12);
+      if(celular.length === 11){
 
-      return `(${p1}) ${p2}-${p3}`;
-    }else if(celular.length === 10){
+        var p1 = celular.substring(0,2);
+        var p2 = celular.substring(2,7);
+        var p3 = celular.substring(7,12);
 
-      var p1 = celular.substring(0,2);
-      var p2 = celular.substring(2,6);
-      var p3 = celular.substring(6,11);
+        return `(${p1}) ${p2}-${p3}`;
+      }else if(celular.length === 10){
 
-      return `(${p1}) ${p2}-${p3}`;
-    }else{
-      return celular;
+        var p1 = celular.substring(0,2);
+        var p2 = celular.substring(2,6);
+        var p3 = celular.substring(6,11);
+
+        return `(${p1}) ${p2}-${p3}`;
+      }else{
+        return celular;
+      }
+
     }
 
   }

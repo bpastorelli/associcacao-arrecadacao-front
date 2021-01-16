@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-xs-12">
             <h2 class="page-header">
-              <i></i> Alterar Morador
+              <i></i> Alterar Visitante
             </h2>
           </div>
         </div>
@@ -33,14 +33,54 @@
 
           <div  class="col-sm-2 col-xs-6">
             <mt-input-container errorMessage="Campo obrigatório!" label="CPF">
-              <input class="form-control" type="text" [(ngModel)]="visitante.cpf" #cpf name="cpf" disabled required minlength="10" placeholder="CPF" pattern="^[0-9]*$" autocomplete="off">
+              <input class="form-control" type="text" [(ngModel)]="visitante.cpf" #cpf name="cpf" minlength="10" placeholder="CPF" pattern="^[0-9]*$" autocomplete="off">
             </mt-input-container>
           </div>
 
           <div class="col-sm-2 col-xs-6">
             <mt-input-container errorMessage="Campo obrigatório!" label="RG">
-              <input class="form-control" name="rg" [(ngModel)]="visitante.rg" #rg minlength="5" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
+              <input class="form-control" name="rg" [(ngModel)]="visitante.rg" #rg disabled minlength="5" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
             </mt-input-container>
+          </div>
+
+          <div class="col-xs-12">
+            <p class="control-label">Endereço:</p>
+          </div>
+          <div class="col-sm-2 col-xs-6">
+            <input class="form-control" name="cep" #cep (blur)="getCep(visitante.cep)" [(ngModel)]="visitante.cep" ngModel maxlength="11" placeholder="CEP" pattern="^[0-9]*$" autocomplete="off">
+          </div>
+
+          <div class="col-sm-6 col-xs-6">
+            <input class="form-control" #endereco ngModel type="text" name="endereco" [(ngModel)]="logradouroResp" maxlength="100" placeholder="Endereço" autocomplete="off">
+          </div>
+
+          <div class="col-sm-2 col-xs-6">
+            <input class="form-control" #numero ngModel type="text" name="numero" [(ngModel)]="visitante.numero" minlength="1" placeholder="Número" pattern="^[0-9]*$" autocomplete="off">
+          </div>
+
+          <div class="col-xs-12">
+            <p class="control-label"> Complemento:</p>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <input class="form-control" #complemento ngModel type="text" name="complemento" [(ngModel)]="visitante.complemento" maxlength="50" placeholder="Complemento" autocomplete="off">
+          </div>
+
+          <div class="col-xs-12">
+            <p class="control-label"> Bairro:</p>
+          </div>
+          <div class="col-sm-4 col-xs-6">
+            <input class="form-control" #bairro ngModel type="text" name="bairro" [(ngModel)]="bairroResp" maxlength="50" placeholder="Bairro" autocomplete="off">
+          </div>
+
+          <div class="col-xs-12">
+            <p class="control-label">Cidade:</p>
+          </div>
+          <div class="col-sm-4 col-xs-6">
+            <input class="form-control" #cidade ngModel type="text" name="cidade" [(ngModel)]="localidadeResp"  maxlength="50" placeholder="Cidade" autocomplete="off">
+          </div>
+
+          <div class="col-sm-1 col-xs-6">
+            <input class="form-control" #uf name="uf" ngModel type="text" [(ngModel)]="ufResp" minlength="2" placeholder="UF" autocomplete="off">
           </div>
 
           <div class="col-xs-12">
@@ -71,6 +111,12 @@
                 <option *ngFor="let situacao of situacaoCadastral" [value]="situacao.id">{{ situacao.label }}</option>
             </select>
           </div>
+        </div>
+
+        <div class="col-sm-2 col-xs-6">
+          <mt-input-container errorMessage="Campo obrigatório com mínimo!" label="Celular">
+            <input class="form-control" type="hidden" name="id" [(ngModel)]="visitante.id" #id required maxlength="11" placeholder="id" autocomplete="off">
+          </mt-input-container>
         </div>
 
         <div *ngIf="!create">
@@ -138,15 +184,53 @@
               </div>
 
               <div class="col-sm-2 col-xs-6">
-                <mt-input-container errorMessage="Campo obrigatório e somente números" label="CPF">
-                  <input class="form-control" name="cpf" ngModel required maxlength="11" placeholder="CPF" pattern="^[0-9]*$" autocomplete="off">
-                </mt-input-container>
+                <input class="form-control" name="cpf" ngModel maxlength="11" placeholder="CPF" pattern="^[0-9]*$" autocomplete="off">
               </div>
 
               <div class="col-sm-2 col-xs-6">
                 <mt-input-container errorMessage="Campo obrigatório e somente números" label="RG">
                   <input class="form-control" name="rg" ngModel required maxlength="11" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
                 </mt-input-container>
+              </div>
+
+              <div class="col-xs-12">
+                <p class="control-label">Endereço:</p>
+              </div>
+              <div class="col-sm-2 col-xs-6">
+                <input class="form-control" name="cep" #cep (blur)="getCep(cep.value)" ngModel maxlength="11" placeholder="CEP" pattern="^[0-9]*$" autocomplete="off">
+              </div>
+
+              <div class="col-sm-6 col-xs-6">
+                <input class="form-control" #endereco ngModel type="text" name="endereco" [(ngModel)]="logradouroResp" maxlength="100" placeholder="Endereço" autocomplete="off">
+              </div>
+
+              <div class="col-sm-2 col-xs-6">
+                <input class="form-control" #numero ngModel type="text" name="numero" minlength="1" placeholder="Número" pattern="^[0-9]*$" autocomplete="off">
+              </div>
+
+              <div class="col-xs-12">
+                <p class="control-label"> Complemento:</p>
+              </div>
+              <div class="col-sm-4 col-xs-12">
+                <input class="form-control" #complemento ngModel type="text" name="complemento" maxlength="50" placeholder="Complemento" autocomplete="off">
+              </div>
+
+              <div class="col-xs-12">
+                <p class="control-label"> Bairro:</p>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <input class="form-control" #bairro ngModel type="text" name="bairro" [(ngModel)]="bairroResp" maxlength="50" placeholder="Bairro" autocomplete="off">
+              </div>
+
+              <div class="col-xs-12">
+                <p class="control-label">Cidade:</p>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <input class="form-control" #cidade ngModel type="text" name="cidade" [(ngModel)]="localidadeResp"  maxlength="50" placeholder="Cidade" autocomplete="off">
+              </div>
+
+              <div class="col-sm-1 col-xs-6">
+                <input class="form-control" #uf name="uf" ngModel type="text" [(ngModel)]="ufResp" minlength="2" placeholder="UF" autocomplete="off">
               </div>
 
               <div class="col-xs-12">
