@@ -9,8 +9,11 @@ import { Cep } from './cep.model';
 
 export class CepComponent implements OnInit {
 
-  errorMessage
-  public cep: Cep
+  public errorMessage
+  public logradouroResp: string;
+  public bairroResp: string;
+  public localidadeResp: string;
+  public ufResp: string;
 
   constructor(private cepService: CepService) { }
 
@@ -21,14 +24,23 @@ export class CepComponent implements OnInit {
 
   getCep(cep: string){
 
-    return this.cepService.getCep(cep)
-      .subscribe(
-        data=>{
-          this.cep = data;
-      },err =>{
-          this.errorMessage = err.message;
-          throw err;
-      });
+      if(cep != ""){
+
+        this.cepService.getCep(cep)
+          .subscribe(
+            data=>{
+              this.logradouroResp = data.logradouro;
+              this.bairroResp = data.bairro;
+              this.localidadeResp = data.localidade;
+              this.ufResp = data.uf;
+          },err =>{
+              this.errorMessage = err.message;
+              throw err;
+          });
+
+      }
+
+    }
   }
 
-}
+
