@@ -24,8 +24,21 @@
       </div>
     </div>
 
+    <div class="col-sm-2 col-xs-6">
+      <div class="form-group">
+        <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Situação</label>
+        <select #posicaoPesquisa
+            name="posicao"
+            id="posicao"
+            class="form-control"
+            [(ngModel)]="posicaoDefault">
+            <option *ngFor="let situacao of situacaoVisita" [value]="situacao.id">{{ situacao.label }}</option>
+        </select>
+      </div>
+    </div>
+
     <div class="col-sm-1 col-xs-2">
-      <button (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value)" class="btn btn-success pull-right"><i></i> Pesquisar
+      <button (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value)" class="btn btn-success pull-right"><i></i> Pesquisar
       </button>
     </div>
 
@@ -44,6 +57,7 @@
                 <th scope="col">Hora Saída</th>
                 <th scope="col">Endereço</th>
                 <th scope="col">Número</th>
+                <th scope="col">Encerrar</th>
             </tr>
           </thead>
           <tbody>
@@ -60,6 +74,7 @@
               <td class="textCenter"><div class="pointer">{{ visita.horaSaida }}</div></td>
               <td ><div class="pointer" >{{ visita.endereco }}</div></td>
               <td class="textCenter"><div class="pointer">{{ visita.numero }}</div></td>
+              <td class="textCenter"><div *ngIf="visita.posicao == 1" class="pointer" (click)="baixarVisita(visita.id)"> Encerrar</div></td>
             </tr>
           </tbody>
         </table>

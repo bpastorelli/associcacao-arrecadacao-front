@@ -20,9 +20,9 @@ export class VisitantesService {
 
   }
 
-  getVisitas(rg: string, cpf: string): Observable<Visita[]> {
+  getVisitas(rg: string, cpf: string, posicao: number): Observable<Visita[]> {
 
-    return this.http.get(`${_API}/associados/visita/filtro?rg=${rg}&cpf=${cpf}&pag=0&ord=dataEntrada&dir=ASC&size=1000000`)
+    return this.http.get(`${_API}/associados/visita/filtro?rg=${rg}&cpf=${cpf}&posicao=${posicao}&pag=0&ord=dataEntrada&dir=ASC&size=1000000`)
       .map(response => response.json())
       .catch(ErrorHandler.handleError)
 
@@ -56,6 +56,17 @@ export class VisitantesService {
 
   }
 
+  baixarVisita(id: string): Observable<Visita>{
 
+    const headers = new Headers()
+    headers.append('Content-Type','application/json')
+
+    return this.http.put(`${_API}/associados/visita/encerrar`
+        , `{ "id": "${id}" }`
+        , new RequestOptions({headers: headers}))
+        .map(ExtractData.extract)
+        .catch(ErrorHandler.extracErrorMessage)
+
+  }
 
 }
