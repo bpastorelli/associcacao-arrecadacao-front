@@ -1,6 +1,6 @@
 import { VisitantesService } from './../visitantes.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Visita } from './visita.model';
 
 @Component({
@@ -12,21 +12,23 @@ export class VisitasComponent implements OnInit {
   public visita: Visita;
   public visitas: Visita[];
   public situacaoVisita = [
-    { id: 2, label: "Todos" },
-    { id: 1, label: "Ativas" },
-    { id: 0, label: "Baixadas" }]
+    { id: 2, label: "Todas" },
+    { id: 1, label: "Em aberto" },
+    { id: 0, label: "Encerradas" }]
 
   pag : Number = 1 ;
   contador : Number = 20;
   posicaoDefault: number = 1;
   errorMessage;
+  @Input() ordenar;
 
 
   constructor(private visitantesService: VisitantesService, private router: Router ) { }
 
   ngOnInit() {
 
-    this.getVisitas(null, null, this.posicaoDefault);
+    this.ordenar = "dataEntrada";
+    this.getVisitas(null, null, this.posicaoDefault, this.ordenar);
 
   }
 
@@ -35,7 +37,7 @@ export class VisitasComponent implements OnInit {
     this.visitantesService.baixarVisita(id)
       .subscribe(data => {
         this.visita = data;
-        this.getVisitas(null,null,this.posicaoDefault);
+        this.getVisitas(null,null,this.posicaoDefault, this.ordenar);
     },err=>{
         this.errorMessage = err.message;
         throw err;
@@ -43,12 +45,14 @@ export class VisitasComponent implements OnInit {
 
   }
 
-  getVisitas(rg: string, cpf: string, posicao: number){
+  getVisitas(rg: string, cpf: string, posicao: number, ord: string){
 
-    this.visitantesService.getVisitas(rg, cpf, posicao)
-        .subscribe(
-           data=>{
-              console.log(data);
+    this.ordenar = ord;
+
+    this.visitantesService.getVisitas(rg, cpf, posicao, ord)
+    .subscribe(
+      data=>{
+        console.log(data);
               this.visitas = data;
            }, err=>{
               console.log(err);

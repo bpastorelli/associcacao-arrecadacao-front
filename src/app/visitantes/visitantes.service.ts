@@ -14,15 +14,17 @@ export class VisitantesService {
 
   getVisitantes(id: string, nome: string, rg: string, cpf: string): Observable<Visitante[]> {
 
-    return this.http.get(`${_API}/associados/visitante/filtro?id=${id}&nome=${nome}&rg=${rg}&cpf=${cpf}&pag=0&ord=id&dir=ASC&size=1000000`)
+    return this.http.get(`${_API}/associados/visitante/filtro?id=${id}&nome=${nome}&rg=${rg}&cpf=${cpf}&pag=0&ord=nome&dir=ASC&size=1000000`)
       .map(response => response.json())
       .catch(ErrorHandler.handleError)
 
   }
 
-  getVisitas(rg: string, cpf: string, posicao: number): Observable<Visita[]> {
+  getVisitas(rg: string, cpf: string, posicao: number, ord: string): Observable<Visita[]> {
 
-    return this.http.get(`${_API}/associados/visita/filtro?rg=${rg}&cpf=${cpf}&posicao=${posicao}&pag=0&ord=dataEntrada&dir=ASC&size=1000000`)
+    console.log(ord);
+
+    return this.http.get(`${_API}/associados/visita/filtro?rg=${rg}&cpf=${cpf}&posicao=${posicao}&pag=0&ord=${ord}&dir=ASC&size=1000000`)
       .map(response => response.json())
       .catch(ErrorHandler.handleError)
 

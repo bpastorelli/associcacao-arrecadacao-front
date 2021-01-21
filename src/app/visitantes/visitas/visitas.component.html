@@ -1,7 +1,12 @@
 <section class="content-header">
   <section class="content">
 
+  <div *ngIf="errorMessage" class="alert alert-warning">
+    <strong>Atenção! </strong>{{ errorMessage }}
+  </div>
+
   <form #form="ngForm" novalidate>
+    <input type="hidden" #ord value="{{ordenar}}">
     <div class="row">
       <div class="col-xs-12">
         <h2 class="page-header">
@@ -38,7 +43,7 @@
     </div>
 
     <div class="col-sm-1 col-xs-2">
-      <button (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value)" class="btn btn-success pull-right"><i></i> Pesquisar
+      <button (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, ord.value)" class="btn btn-success pull-right"><i></i> Pesquisar
       </button>
     </div>
 
@@ -47,15 +52,15 @@
           <thead>
             <tr class="row">
                 <th style="width: 6px;" scope="col"></th>
-                <th scope="col"><span>ID</span></th>
-                <th scope="col">Nome</th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'id')">ID</div></th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'visitante.nome')">Nome</div></th>
                 <th scope="col">CPF</th>
                 <th scope="col">RG</th>
-                <th scope="col">Data Entrada</th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'dataEntrada')">Data Entrada</div></th>
                 <th scope="col">Hora Entrada</th>
                 <th scope="col">Data Saída</th>
                 <th scope="col">Hora Saída</th>
-                <th scope="col">Endereço</th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'visitante.endereco')">Endereço</div></th>
                 <th scope="col">Número</th>
                 <th scope="col">Encerrar</th>
             </tr>
@@ -63,7 +68,7 @@
           <tbody>
             <tr class="row" *ngFor="let visita of visitas | paginate: { itemsPerPage: contador, currentPage: pag }">
               <td class="textCenter" ><img *ngIf="visita.posicao == 0" class="img" src="assets/img/balls/verde.png">
-                                      <img *ngIf="visita.posicao != 0" class="img" src="assets/img/balls/vermelho.png"></td>
+                                      <img *ngIf="visita.posicao != 0" class="img" src="assets/img/balls/amarelo.png"></td>
               <td class="textCenter"><div class="pointer">{{ formatId(visita.id, 6) }}</div></td>
               <td ><div class="pointer">{{ visita.nome }}</div></td>
               <td class="textCenter"><div class="pointer">{{ formatCPF(visita.cpf) }}</div></td>
