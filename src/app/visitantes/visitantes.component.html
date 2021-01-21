@@ -39,22 +39,22 @@
     <section class="content">
         <table class="table-striped">
           <thead>
-            <tr>
-                <th><span>ID</span></th>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>RG</th>
-                <th>Endereço</th>
-                <th>Número</th>
-                <th>Cidade</th>
-                <th>UF</th>
-                <th>Telefone</th>
-                <th>Celular</th>
-                <th>Última Visita</th>
+            <tr class="row">
+                <th scope="col"><span>ID</span></th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">RG</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">Número</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">UF</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Última Visita</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let visitante of visitantes | paginate: { itemsPerPage: contador, currentPage: pag }">
+            <tr class="row" *ngFor="let visitante of visitantes | paginate: { itemsPerPage: contador, currentPage: pag }">
               <td class="textCenter"><div class="pointer" (click)="editVisitante(visitante.id)">{{ formatId(visitante.id, 6) }}</div></td>
               <td ><div class="pointer" (click)="editVisitante(visitante.id)">{{ visitante.nome }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="editVisitante(visitante.id)">{{ formatCPF(visitante.cpf) }}</div></td>

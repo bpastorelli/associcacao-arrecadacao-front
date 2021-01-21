@@ -39,6 +39,7 @@ import { ResidenciaComponent } from './residencias/residencia/residencia.compone
 import { CepComponent } from './cep/cep.component';
 import { VisitantesComponent } from './visitantes/visitantes.component';
 import { VisitanteComponent } from './visitantes/visitante/visitante.component';
+import { VisitasComponent } from './visitantes/visitas/visitas.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { VisitanteComponent } from './visitantes/visitante/visitante.component';
     ResidenciaComponent,
     CepComponent,
     VisitantesComponent,
-    VisitanteComponent
+    VisitanteComponent,
+    VisitasComponent
   ],
   imports: [
     BrowserModule,

@@ -10,10 +10,21 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-        <ul class="nav navbar-nav">
+        <ul class="menu">
             <li routerLink="active"><a [routerLink]="['/moradores']"> Moradores</a></li>
-            <li routerLink="active"><a [routerLink]="['/residencias']"> Residências</a></li>
-            <li routerLink="active"><a [routerLink]="['/visitantes']"> Visitantes</a></li>
+            <li routerLink="active"><a [routerLink]="['/residencias']"> Residência</a>
+              <ul>
+                <li routerLink="active"><a [routerLink]="['residencia/create']"> Incluir</a></li>
+                <li routerLink="active"><a [routerLink]="['/residencias']"> Residências</a>
+              </ul>
+            </li>
+            <li routerLink="active"><a [routerLink]="['/visitantes']"> Visitante</a>
+              <ul>
+                <li routerLink="active"><a [routerLink]="['visitante/create']"> Incluir</a></li>
+                <li routerLink="active"><a [routerLink]="['/visitantes']"> Visitantes</a>
+                  <li routerLink="active"><a [routerLink]="['/visitas']"> Visitas</a></li>
+              </ul>
+            </li>
             <li routerLink="active"><a [routerLink]="['/order']"> Pedidos</a></li>
             <li routerLink="active"><a [routerLink]="['/about']"> Sobre</a></li>
         </ul>

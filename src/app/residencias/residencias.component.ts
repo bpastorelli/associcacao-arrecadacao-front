@@ -60,6 +60,12 @@ export class ResidenciasComponent implements OnInit {
 
   }
 
+  incluirVisita(codigo: string){
+
+    this.router.navigate([`visita/residencia/`, codigo])
+
+  }
+
   editResidencia(codigo: string){
 
     this.router.navigate([`/residencia/`, codigo])

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ErrorHandler } from '../app.error-handler';
 import { _API } from '../app.api';
 import { Http, RequestOptions, Headers } from '@angular/http';
+import { Visita } from './visitas/visita.model';
 import { Visitante } from './visitante.model';
 import { ExtractData } from './../app.extract-data';
 
@@ -14,6 +15,14 @@ export class VisitantesService {
   getVisitantes(id: string, nome: string, rg: string, cpf: string): Observable<Visitante[]> {
 
     return this.http.get(`${_API}/associados/visitante/filtro?id=${id}&nome=${nome}&rg=${rg}&cpf=${cpf}&pag=0&ord=id&dir=ASC&size=1000000`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handleError)
+
+  }
+
+  getVisitas(rg: string, cpf: string): Observable<Visita[]> {
+
+    return this.http.get(`${_API}/associados/visita/filtro?rg=${rg}&cpf=${cpf}&pag=0&ord=dataEntrada&dir=ASC&size=1000000`)
       .map(response => response.json())
       .catch(ErrorHandler.handleError)
 
@@ -46,5 +55,7 @@ export class VisitantesService {
         .catch(ErrorHandler.extracErrorMessage)
 
   }
+
+
 
 }
