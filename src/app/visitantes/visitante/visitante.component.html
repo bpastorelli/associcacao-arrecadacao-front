@@ -27,7 +27,7 @@
           </div>
           <div  class="col-sm-6 col-xs-12">
             <mt-input-container errorMessage="Campo obrigatório!" label="Nome">
-              <input class="form-control" type="text" [(ngModel)]="visitante.nome" #nome name="nome" required minlength="10" placeholder="Nome" autocomplete="off">
+              <input class="form-control" type="text" [(ngModel)]="visitante.nome" #nome name="nome" required maxlength="50" placeholder="Nome" autocomplete="off">
             </mt-input-container>
           </div>
 
@@ -179,7 +179,7 @@
 
               <div class="col-sm-6 col-xs-12">
                 <mt-input-container errorMessage="Campo obrigatório com mínimo 10 caracteres" label="Nome">
-                  <input class="form-control" name="nome" ngModel required minlength="10" placeholder="Nome" autocomplete="off">
+                  <input class="form-control" name="nome" ngModel required maxlength="50" placeholder="Nome" autocomplete="off">
                 </mt-input-container>
               </div>
 

@@ -54,8 +54,6 @@ export class VisitanteComponent implements OnInit {
     this.visitantesService.postVisitante(visitante)
       .subscribe(data => {
         this.visitante = data;
-        this.id = data.id;
-        alert(this.id);
         this.router.navigate(['/morador-summary']);
     },err=>{
         this.errorMessage = err.message;

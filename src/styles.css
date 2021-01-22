@@ -273,6 +273,7 @@ th{
  }
 
  table, th, td {
+  font-size: 13px;
   border: 1px solid silver;
   padding: 4px;
 }
@@ -313,6 +314,7 @@ th{
 *{margin: 0px; padding: 0px;}
 
 .menu{
+  font-size: 13px;
   list-style:none;
   border:1px solid #c0c0c0;
   float:left;
@@ -328,12 +330,12 @@ th{
 
 .menu li a:hover{
   background:#333;
-  color:#fff;
+  color:rgb(247, 241, 241);
 }
 
 .menu li  ul{
   position:absolute;
-  top:40px;
+  top:38px;
   left:0;
   background-color:#fff;
   display:none;
