@@ -52,11 +52,11 @@ export class VisitasComponent implements OnInit {
     this.visitantesService.getVisitas(rg, cpf, posicao, ord)
     .subscribe(
       data=>{
-        console.log(data);
-              this.visitas = data;
-           }, err=>{
-              console.log(err);
-         }
+            this.visitas = data;
+        }, err=>{
+            this.errorMessage = err.message;
+            throw err;
+        }
       );
   }
 

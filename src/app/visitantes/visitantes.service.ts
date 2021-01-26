@@ -1,10 +1,11 @@
+import { _API } from './../app.api';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { ErrorHandler } from '../app.error-handler';
-import { _API } from '../app.api';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Visita } from './visitas/visita.model';
 import { Visitante } from './visitante.model';
+import { VisitaRequest } from './visita/visitaRequest.model';
 import { ExtractData } from './../app.extract-data';
 
 @Injectable()
@@ -20,13 +21,19 @@ export class VisitantesService {
 
   }
 
-  getVisitas(rg: string, cpf: string, posicao: number, ord: string): Observable<Visita[]> {
+  getVisitante(rg: string, cpf: string): Observable<Visitante> {
 
-    console.log(ord);
-
-    return this.http.get(`${_API}/associados/visita/filtro?rg=${rg}&cpf=${cpf}&posicao=${posicao}&pag=0&ord=${ord}&dir=ASC&size=1000000`)
+    return this.http.get(`${_API}/associados/visitante/busca?rg=${rg}&cpf=${cpf}`)
       .map(response => response.json())
       .catch(ErrorHandler.handleError)
+
+  }
+
+  getVisitas(rg: string, cpf: string, posicao: number, ord: string): Observable<Visita[]> {
+
+    return this.http.get(`${_API}/associados/visita/filtro?rg=${rg}&cpf=${cpf}&posicao=${posicao}&pag=0&ord=${ord}&dir=ASC&size=1000000`)
+    .map(response => response.json())
+    .catch(ErrorHandler.handleError)
 
   }
 
@@ -47,8 +54,6 @@ export class VisitantesService {
 
     const headers = new Headers()
     headers.append('Content-Type','application/json')
-
-    console.log(visitante)
 
     return this.http.put(`${_API}/associados/visitante/${id}`
         , JSON.stringify(visitante)
@@ -71,4 +76,16 @@ export class VisitantesService {
 
   }
 
-}
+  postVisita(visitaRequest: VisitaRequest): Observable<Visita>{
+
+    const headers = new Headers()
+    headers.append('Content-Type','application/json')
+
+    return this.http.post(`${_API}/associados/visita/incluir`
+        , JSON.stringify(visitaRequest)
+        , new RequestOptions({headers: headers}))
+        .map(ExtractData.extract)
+        .catch(ErrorHandler.extracErrorMessage)
+    }
+
+  }

@@ -12,6 +12,7 @@ import { VisitasComponent } from './visitantes/visitas/visitas.component';
 import { VisitanteComponent } from './visitantes/visitante/visitante.component';
 import { OrderComponent } from './order/order.component';
 import { MoradorEditSummaryComponent } from './summary/morador-edit-summary.component';
+import { VisitaRequestComponent } from './visitantes/visita/visita.component';
 
 export const ROUTES: Routes = [
   {path: '', component: HomeComponent},
@@ -30,7 +31,9 @@ export const ROUTES: Routes = [
   {path: 'order', component: OrderComponent},
   {path: 'visitantes', component: VisitantesComponent},
   {path: 'visitante/:codigo', component: VisitanteComponent},
-  {path: 'visitas', component: VisitasComponent}
+  {path: 'visitas', component: VisitasComponent},
+  {path: 'visita/residencia/:codigo', component: VisitaRequestComponent}
+
 
 
 ]

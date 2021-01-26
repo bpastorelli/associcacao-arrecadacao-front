@@ -40,6 +40,7 @@ import { CepComponent } from './cep/cep.component';
 import { VisitantesComponent } from './visitantes/visitantes.component';
 import { VisitanteComponent } from './visitantes/visitante/visitante.component';
 import { VisitasComponent } from './visitantes/visitas/visitas.component';
+import { VisitaRequestComponent } from './visitantes/visita/visita.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { VisitasComponent } from './visitantes/visitas/visitas.component';
     CepComponent,
     VisitantesComponent,
     VisitanteComponent,
-    VisitasComponent
+    VisitasComponent,
+    VisitaRequestComponent
   ],
   imports: [
     BrowserModule,

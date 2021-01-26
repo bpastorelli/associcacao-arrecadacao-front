@@ -1,0 +1,58 @@
+    <!--Inicio do Form de Inclusão-->
+    <section class="invoice">
+
+      <div *ngIf="errorMessage" class="alert alert-warning">
+        <strong>Atenção! </strong>{{ errorMessage }}
+      </div>
+
+        <form #formCreate="ngForm" novalidate>
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i></i> Registrar visita
+              </h2>
+            </div>
+          </div>
+
+          <div class="row invoice-info">
+            <div class="col-xs-12">
+              <p class="control-label">Dados do visitante:</p>
+            </div>
+
+            <div class="col-sm-2 col-xs-6">
+              <input class="form-control" #rg name="rg" (blur)="getVisitante(rg.value)" ngModel required maxlength="11" placeholder="RG" pattern="^[0-9]*$" autocomplete="off">
+            </div>
+
+            <div class="col-sm-6 col-xs-12">
+              <mt-input-container label="Nome">
+                <input class="form-control" disabled name="nome" [(ngModel)]="nomeResp" required maxlength="50" placeholder="Nome" autocomplete="off">
+              </mt-input-container>
+            </div>
+
+            <div class="col-xs-12">
+              <p class="control-label">Endereço:</p>
+            </div>
+
+            <div class="col-sm-6 col-xs-12">
+              <mt-input-container label="Endereço">
+                <input class="form-control" disabled name="endereco" [(ngModel)]="enderecoResp" maxlength="50" placeholder="Endereço" autocomplete="off">
+              </mt-input-container>
+            </div>
+
+            <div class="col-sm-2 col-xs-12">
+              <mt-input-container label="Número">
+                <input class="form-control" disabled name="numero" [(ngModel)]="numeroResp" maxlength="50" placeholder="Número" autocomplete="off">
+              </mt-input-container>
+            </div>
+
+            <!-- /.row -->
+            </div>
+              <div class="col-xs-12">
+                <button class="pointer" (click)="postVisita(formCreate.value)" class="btn btn-success pull-right"
+                  [disabled]="!formCreate.valid"><i></i> Salvar
+                </button>
+              </div>
+        </form>
+
+    <!--Fim do Form de Inclusão-->
+    </section>
