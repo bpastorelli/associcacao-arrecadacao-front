@@ -31,7 +31,7 @@ export class VisitasComponent implements OnInit {
 
     this.ordenar = "dataEntrada";
     this.direction = 'ASC';
-    this.getVisitas(null, null, this.posicaoDefault, this.ordenar, this.direction);
+    this.getVisitas(null, null, null, this.posicaoDefault, this.ordenar, this.direction);
 
   }
 
@@ -40,7 +40,7 @@ export class VisitasComponent implements OnInit {
     this.visitantesService.baixarVisita(id)
       .subscribe(data => {
         this.visita = data;
-        this.getVisitas(null,null,this.posicaoDefault, this.ordenar, this.direction);
+        this.getVisitas(null, null,null,this.posicaoDefault, this.ordenar, this.direction);
     },err=>{
         this.errorMessage = err.message;
         throw err;
@@ -48,12 +48,12 @@ export class VisitasComponent implements OnInit {
 
   }
 
-  getVisitas(rg: string, cpf: string, posicao: number, ord: string, dir: string){
+  getVisitas(nome: string, rg: string, cpf: string, posicao: number, ord: string, dir: string){
 
     this.ordenar = ord;
     this.direction = dir;
 
-    this.visitantesService.getVisitas(rg, cpf, posicao, ord, dir)
+    this.visitantesService.getVisitas(nome, rg, cpf, posicao, ord, dir)
     .subscribe(
       data=>{
             this.visitas = data;

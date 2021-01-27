@@ -29,9 +29,9 @@ export class VisitantesService {
 
   }
 
-  getVisitas(rg: string, cpf: string, posicao: number, ord: string, dir: string): Observable<Visita[]> {
+  getVisitas(nome: string, rg: string, cpf: string, posicao: number, ord: string, dir: string): Observable<Visita[]> {
 
-    return this.http.get(`${_API}/associados/visita/filtro?rg=${rg}&cpf=${cpf}&posicao=${posicao}&pag=0&ord=${ord}&dir=${dir}&size=1000000`)
+    return this.http.get(`${_API}/associados/visita/filtro?nome=${nome}&rg=${rg}&cpf=${cpf}&posicao=${posicao}&pag=0&ord=${ord}&dir=${dir}&size=1000000`)
     .map(response => response.json())
     .catch(ErrorHandler.handleError)
 
