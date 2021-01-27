@@ -65,7 +65,7 @@
               <td class="textCenter" ><div class="pointer" (click)="editVisitante(visitante.id)">{{ visitante.uf }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="editVisitante(visitante.id)">{{ formatTelefone(visitante.telefone) }}</div></td>
               <td class="textCenter"><div class="pointer" (click)="editVisitante(visitante.id)">{{ formatCelular(visitante.celular) }}</div></td>
-              <td><div class="pointer"></div></td>
+              <td class="textCenter"><div class="pointer" (click)="editVisitante(visitante.id)">{{ visitante.ultimaVisita }}</div></td>
             </tr>
           </tbody>
         </table>

@@ -14,6 +14,7 @@ export interface Visitante{
     cidade: string,
     uf: string,
     dataCriacao: string,
+    ultimaVisita: string,
     posicao: number
 
 }
