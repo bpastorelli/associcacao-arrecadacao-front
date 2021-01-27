@@ -7,6 +7,7 @@
 
   <form #form="ngForm" novalidate>
     <input type="hidden" #ord value="{{ordenar}}">
+    <input type="hidden" #dir value="{{direction}}">
     <div class="row">
       <div class="col-xs-12">
         <h2 class="page-header">
@@ -43,7 +44,7 @@
     </div>
 
     <div class="col-sm-1 col-xs-2">
-      <button (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, ord.value)" class="btn btn-success pull-right"><i></i> Pesquisar
+      <button (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, ord.value, dir.value)" class="btn btn-success pull-right"><i></i> Pesquisar
       </button>
     </div>
 
@@ -52,15 +53,15 @@
           <thead>
             <tr class="row">
                 <th style="width: 6px;" scope="col"></th>
-                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'id')">ID</div></th>
-                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'visitante.nome')">Nome</div></th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'id', 'ASC')">ID</div></th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'visitante.nome', 'ASC')" (dblclick)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'visitante.nome', 'DESC')">Nome</div></th>
                 <th scope="col">CPF</th>
                 <th scope="col">RG</th>
-                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'dataEntrada')">Data Entrada</div></th>
-                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'horaEntrada')">Hora Entrada</div></th>
-                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'dataSaida')">Data Saída</div></th>
-                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'horaSaida')">Hora Saída</div></th>
-                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'visitante.endereco')">Endereço</div></th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'dataEntrada', 'ASC')" (dblclick)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'dataEntrada', 'DESC')">Data Entrada</div></th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'horaEntrada', 'ASC')" (dblclick)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'horaEntrada', 'DESC')">Hora Entrada</div></th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'dataSaida', 'ASC')" (dblclick)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'dataSaida', 'DESC')">Data Saída</div></th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'horaSaida', 'ASC')" (dblclick)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'horaSaida', 'DESC')">Hora Saída</div></th>
+                <th scope="col"><div class="pointer" (click)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'visitante.endereco', 'ASC')" (dblclick)="getVisitas(rgPesquisa.value, cpfPesquisa.value, posicaoPesquisa.value, 'visitante.endereco', 'DESC')">Endereço</div></th>
                 <th scope="col">Número</th>
                 <th scope="col">Encerrar</th>
             </tr>
